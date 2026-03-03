@@ -3,14 +3,939 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Shopify Plus Partner Certificado en México. Migraciones enterprise desde VTEX, Adobe Commerce, SAP y WooCommerce. ROI en 3-9 meses, 60% menos TCO. Redegal." />
-  <meta name="theme-color" content="#0a0a1a" />
-  <meta property="og:title" content="Migra a Shopify Plus — Redegal, Partner Certificado México" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="description" content="Shopify Plus Partner Certificado España y LATAM. Migraciones enterprise desde VTEX, Adobe Commerce, SAP y WooCommerce. 60% menos TCO, +36% conversión, 8-16 semanas. Redegal." />
+  <meta property="og:title" content="Shopify Plus System — Redegal, Partner Certificado" />
   <meta property="og:description" content="60% menos TCO. +36% conversión. Migración sin riesgo en 8-16 semanas. Shopify Plus Partner Certificado." />
   <meta property="og:type" content="website" />
-  <title>Migra a Shopify Plus — Redegal | Partner Certificado México</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <title>Shopify Plus System — Redegal | Partner Certificado España &amp; LATAM</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ==============================
+       RESET & BASE
+    ============================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #1a1a1a;
+      background: #ffffff;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
+
+    /* ==============================
+       DESIGN TOKENS
+    ============================== */
+    :root {
+      --blue: #007fff;
+      --indigo: #6366f1;
+      --dark: #111111;
+      --gray-bg: #f8f8f8;
+      --white: #ffffff;
+      --text-muted: #6b7280;
+      --border: #e5e7eb;
+      --radius-pill: 50px;
+      --radius-card: 16px;
+      --shadow: 0 4px 24px rgba(0,0,0,0.08);
+      --shadow-lg: 0 8px 48px rgba(0,0,0,0.12);
+      --gradient: linear-gradient(135deg, #007fff, #6366f1);
+    }
+
+    /* ==============================
+       UTILITIES
+    ============================== */
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+    .text-gradient {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .section-label {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--blue);
+      background: rgba(0,127,255,0.08);
+      padding: 6px 14px;
+      border-radius: 50px;
+      margin-bottom: 16px;
+    }
+    .section-label.light { color: rgba(255,255,255,0.8); background: rgba(255,255,255,0.12); }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: var(--radius-pill);
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      transition: all 0.25s ease;
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: var(--blue);
+      color: #fff;
+      box-shadow: 0 4px 16px rgba(0,127,255,0.35);
+    }
+    .btn-primary:hover { background: #0070e0; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,127,255,0.4); }
+    .btn-outline {
+      background: transparent;
+      color: var(--blue);
+      border: 2px solid var(--blue);
+    }
+    .btn-outline:hover { background: var(--blue); color: #fff; transform: translateY(-2px); }
+    .btn-white {
+      background: #fff;
+      color: var(--blue);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.18); }
+
+    /* Reveal animation */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ==============================
+       NAV
+    ============================== */
+    #navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(255,255,255,0.9);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    #navbar.scrolled { border-color: var(--border); box-shadow: 0 2px 20px rgba(0,0,0,0.06); }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+      gap: 32px;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    .nav-logo img {
+      height: 30px;
+      width: auto;
+      display: block;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: #374151;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: color 0.2s, background 0.2s;
+    }
+    .nav-links a:hover { color: var(--blue); background: rgba(0,127,255,0.06); }
+    .nav-cta { flex-shrink: 0; }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      padding: 8px;
+      cursor: pointer;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px; height: 2px;
+      background: #374151;
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 72px; left: 0; right: 0;
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px 24px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      z-index: 999;
+    }
+    .mobile-menu.open { display: block; }
+    .mobile-menu ul { display: flex; flex-direction: column; gap: 4px; margin-bottom: 16px; }
+    .mobile-menu a {
+      display: block;
+      padding: 12px 16px;
+      font-size: 15px;
+      font-weight: 500;
+      color: #374151;
+      border-radius: 10px;
+    }
+    .mobile-menu a:hover { background: var(--gray-bg); color: var(--blue); }
+
+    /* ==============================
+       HERO
+    ============================== */
+    #hero {
+      padding-top: 120px;
+      padding-bottom: 80px;
+      background: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-orb {
+      position: absolute;
+      top: -200px; right: -200px;
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(0,127,255,0.08) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero-orb-2 {
+      position: absolute;
+      bottom: -150px; left: -150px;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(99,102,241,0.06) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero-inner { position: relative; z-index: 1; text-align: center; max-width: 860px; margin: 0 auto; }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0,127,255,0.06);
+      border: 1px solid rgba(0,127,255,0.2);
+      border-radius: 50px;
+      padding: 8px 18px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--blue);
+      margin-bottom: 24px;
+    }
+    .hero-badge-dot {
+      width: 8px; height: 8px;
+      background: var(--blue);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+    .hero-eyebrow {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .hero-h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: clamp(36px, 5.5vw, 64px);
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+    .hero-h1 .line1 {
+      display: block;
+      color: #9ca3af;
+      font-weight: 700;
+    }
+    .hero-h1 .line2 { display: block; color: var(--dark); }
+    .hero-subtitle {
+      font-size: clamp(16px, 2vw, 18px);
+      color: #6b7280;
+      max-width: 680px;
+      margin: 0 auto 36px;
+      line-height: 1.7;
+    }
+    .hero-ctas {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 56px;
+    }
+    .hero-stats {
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      background: #fff;
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    .hero-stat {
+      flex: 1;
+      padding: 20px 16px;
+      text-align: center;
+      border-right: 1px solid var(--border);
+    }
+    .hero-stat:last-child { border-right: none; }
+    .hero-stat-value {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 22px;
+      color: var(--blue);
+      display: block;
+    }
+    .hero-stat-label { font-size: 11px; color: var(--text-muted); font-weight: 500; margin-top: 2px; }
+
+    /* ==============================
+       TRUST BAR
+    ============================== */
+    #trust {
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      padding: 20px 0;
+    }
+    .trust-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .trust-text {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 500;
+      max-width: 300px;
+    }
+    .trust-logos {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .trust-pill {
+      font-size: 12px;
+      font-weight: 600;
+      color: #374151;
+      background: var(--gray-bg);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      padding: 6px 14px;
+      white-space: nowrap;
+    }
+    .trust-pill.highlight { background: rgba(0,127,255,0.06); border-color: rgba(0,127,255,0.25); color: var(--blue); }
+
+    /* ==============================
+       PROBLEMS
+    ============================== */
+    #problems { background: var(--gray-bg); padding: 96px 0; }
+    .problems-header { text-align: center; margin-bottom: 56px; }
+    .problems-header h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: clamp(28px, 4vw, 44px);
+      color: var(--dark);
+      margin-bottom: 16px;
+    }
+    .problems-header p { font-size: 17px; color: var(--text-muted); max-width: 560px; margin: 0 auto; }
+    .problems-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .problem-card {
+      background: #fff;
+      border-radius: var(--radius-card);
+      padding: 28px;
+      box-shadow: var(--shadow);
+      border-left: 4px solid;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .problem-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .problem-card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+    .problem-platform {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 18px;
+    }
+    .problem-card-title { font-weight: 700; font-size: 15px; color: var(--dark); margin-bottom: 12px; }
+    .problem-details { display: flex; flex-direction: column; gap: 8px; }
+    .problem-detail {
+      font-size: 13px;
+      color: #6b7280;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .problem-detail::before { content: '•'; color: #9ca3af; flex-shrink: 0; margin-top: 1px; }
+
+    /* ==============================
+       SOLUTION
+    ============================== */
+    #solution { background: var(--dark); padding: 96px 0; }
+    .solution-header { text-align: center; margin-bottom: 56px; }
+    .solution-header h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: clamp(28px, 4vw, 44px);
+      color: #fff;
+      margin-bottom: 16px;
+    }
+    .solution-inner { display: grid; grid-template-columns: 1fr 2fr; gap: 48px; align-items: start; }
+    .solution-metric { color: #fff; }
+    .solution-metric-value {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 96px;
+      line-height: 1;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .solution-metric-label { font-size: 18px; color: rgba(255,255,255,0.7); margin-top: 8px; line-height: 1.4; }
+    .solution-metric-sub { font-size: 13px; color: rgba(255,255,255,0.45); margin-top: 12px; }
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .bento-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius-card);
+      padding: 24px;
+      transition: background 0.25s, border-color 0.25s, transform 0.25s;
+    }
+    .bento-card:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(0,127,255,0.3);
+      transform: translateY(-3px);
+    }
+    .bento-icon { font-size: 28px; margin-bottom: 12px; }
+    .bento-title { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 14px; color: #fff; margin-bottom: 8px; }
+    .bento-desc { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.5; }
+
+    /* ==============================
+       GARTNER
+    ============================== */
+    #gartner { background: #fff; padding: 96px 0; }
+    .gartner-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .gartner-left .section-label { margin-bottom: 16px; }
+    .gartner-left h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: clamp(28px, 4vw, 48px);
+      color: var(--dark);
+      margin-bottom: 8px;
+    }
+    .gartner-left h3 { font-size: 18px; font-weight: 600; color: var(--blue); margin-bottom: 28px; }
+    .gartner-years { display: flex; gap: 12px; margin-bottom: 28px; }
+    .year-badge {
+      background: var(--gradient);
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 14px;
+      padding: 8px 20px;
+      border-radius: 50px;
+    }
+    .gartner-quote {
+      font-size: 16px;
+      color: #374151;
+      font-style: italic;
+      line-height: 1.7;
+      border-left: 3px solid var(--blue);
+      padding-left: 20px;
+      margin-bottom: 16px;
+    }
+    .gartner-legal { font-size: 11px; color: #9ca3af; }
+    .gartner-right { display: flex; align-items: center; justify-content: center; }
+    .gartner-visual {
+      background: var(--gray-bg);
+      border-radius: 24px;
+      padding: 48px;
+      text-align: center;
+      width: 100%;
+      border: 1px solid var(--border);
+    }
+    .gartner-visual-icon { font-size: 72px; margin-bottom: 16px; }
+    .gartner-visual-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 20px;
+      color: var(--dark);
+      margin-bottom: 8px;
+    }
+    .gartner-visual-sub { font-size: 14px; color: var(--text-muted); }
+
+    /* ==============================
+       COMPARISON TABLE
+    ============================== */
+    #comparison { background: var(--gray-bg); padding: 96px 0; }
+    .comparison-header { text-align: center; margin-bottom: 48px; }
+    .comparison-header h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: clamp(26px, 3.5vw, 40px);
+      color: var(--dark);
+    }
+    .table-wrap { overflow-x: auto; border-radius: var(--radius-card); box-shadow: var(--shadow-lg); }
+    table { width: 100%; border-collapse: collapse; background: #fff; min-width: 760px; }
+    thead th {
+      padding: 16px 18px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      text-align: left;
+      background: #fff;
+      border-bottom: 2px solid var(--border);
+      white-space: nowrap;
+    }
+    thead th:first-child { position: sticky; left: 0; background: #fff; z-index: 2; }
+    thead th.col-plus {
+      background: var(--blue);
+      color: #fff;
+    }
+    tbody tr { border-bottom: 1px solid #f3f4f6; }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: #fafafa; }
+    tbody td {
+      padding: 14px 18px;
+      font-size: 13px;
+      color: #374151;
+    }
+    tbody td:first-child {
+      position: sticky;
+      left: 0;
+      background: #fff;
+      font-weight: 600;
+      color: var(--dark);
+      z-index: 1;
+      border-right: 1px solid var(--border);
+    }
+    tbody tr:hover td:first-child { background: #fafafa; }
+    .col-plus-cell {
+      background: rgba(0,127,255,0.06);
+      color: var(--blue);
+      font-weight: 600;
+    }
+    .check { color: #22c55e; font-weight: 700; }
+    .cross { color: #ef4444; }
+
+    /* ==============================
+       METHODOLOGY
+    ============================== */
+    #methodology { background: #fff; padding: 96px 0; }
+    .methodology-header { text-align: center; margin-bottom: 64px; }
+    .methodology-header h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: clamp(26px, 3.5vw, 44px);
+      color: var(--dark);
+    }
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      position: relative;
+    }
+    .steps-grid::before {
+      content: '';
+      position: absolute;
+      top: 40px; left: 12.5%; right: 12.5%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--blue), var(--indigo));
+      z-index: 0;
+    }
+    .step { padding: 0 16px; position: relative; z-index: 1; }
+    .step-num {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: var(--gradient);
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      box-shadow: 0 4px 16px rgba(0,127,255,0.35);
+    }
+    .step-content { text-align: center; }
+    .step-duration {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--blue);
+      background: rgba(0,127,255,0.08);
+      padding: 4px 10px;
+      border-radius: 50px;
+      margin-bottom: 10px;
+    }
+    .step-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--dark);
+      margin-bottom: 12px;
+    }
+    .step-list { text-align: left; display: flex; flex-direction: column; gap: 6px; }
+    .step-list li { font-size: 13px; color: #6b7280; display: flex; align-items: flex-start; gap: 6px; }
+    .step-list li::before { content: '→'; color: var(--blue); flex-shrink: 0; font-size: 12px; margin-top: 2px; }
+
+    /* ==============================
+       SARAH SECTION
+    ============================== */
+    #sarah-section {
+      background: var(--gradient);
+      padding: 96px 0;
+    }
+    .sarah-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .sarah-left { color: #fff; }
+    .sarah-left h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: clamp(30px, 4vw, 48px);
+      margin-bottom: 16px;
+    }
+    .sarah-left p { font-size: 17px; opacity: 0.85; line-height: 1.7; margin-bottom: 32px; }
+    .sarah-capabilities { display: flex; flex-direction: column; gap: 14px; margin-bottom: 36px; }
+    .sarah-cap {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 15px;
+      opacity: 0.9;
+    }
+    .sarah-cap-check {
+      width: 22px; height: 22px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      font-size: 12px;
+      font-weight: 700;
+      margin-top: 1px;
+    }
+    .sarah-right { display: flex; justify-content: flex-end; }
+    .chat-mockup {
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.2);
+      width: 100%;
+      max-width: 440px;
+      overflow: hidden;
+    }
+    .chat-header {
+      background: var(--dark);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .chat-avatar {
+      width: 36px; height: 36px;
+      background: var(--gradient);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff;
+      font-weight: 800;
+      font-size: 14px;
+    }
+    .chat-name { color: #fff; font-weight: 600; font-size: 14px; }
+    .chat-status { font-size: 11px; color: #22c55e; }
+    .chat-body { padding: 20px; display: flex; flex-direction: column; gap: 12px; background: #f9fafb; }
+    .msg { max-width: 82%; display: flex; flex-direction: column; gap: 4px; }
+    .msg.user { align-self: flex-end; align-items: flex-end; }
+    .msg.sarah { align-self: flex-start; }
+    .msg-bubble {
+      padding: 10px 14px;
+      border-radius: 16px;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .msg.user .msg-bubble { background: var(--blue); color: #fff; border-bottom-right-radius: 4px; }
+    .msg.sarah .msg-bubble { background: #fff; color: #374151; border-bottom-left-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+    .msg-time { font-size: 10px; color: #9ca3af; }
+
+    /* ==============================
+       SUCCESS STORIES
+    ============================== */
+    #stories { background: #fff; padding: 96px 0; }
+    .stories-header { text-align: center; margin-bottom: 56px; }
+    .stories-header h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: clamp(28px, 4vw, 44px);
+      color: var(--dark);
+      margin-bottom: 16px;
+    }
+    .stories-header p { font-size: 17px; color: var(--text-muted); max-width: 580px; margin: 0 auto; }
+    .stories-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 56px; }
+    .story-card {
+      border-radius: var(--radius-card);
+      border: 1px solid var(--border);
+      padding: 28px;
+      transition: transform 0.25s, box-shadow 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+    .story-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--gradient);
+    }
+    .story-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .story-metric {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 40px;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 4px;
+    }
+    .story-metric-label { font-size: 13px; color: var(--text-muted); margin-bottom: 20px; }
+    .story-name { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 20px; color: var(--dark); margin-bottom: 4px; }
+    .story-sector { font-size: 12px; color: var(--blue); font-weight: 600; margin-bottom: 16px; }
+    .story-details { display: flex; flex-direction: column; gap: 6px; margin-bottom: 20px; }
+    .story-detail { font-size: 13px; color: #6b7280; display: flex; align-items: center; gap: 6px; }
+    .story-detail-dot { width: 6px; height: 6px; background: var(--blue); border-radius: 50%; flex-shrink: 0; }
+    .story-quote {
+      font-size: 13px;
+      color: #374151;
+      font-style: italic;
+      line-height: 1.6;
+      border-left: 3px solid rgba(0,127,255,0.25);
+      padding-left: 14px;
+    }
+    .stats-banner {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      background: var(--dark);
+      border-radius: var(--radius-card);
+      overflow: hidden;
+    }
+    .banner-stat {
+      padding: 32px 24px;
+      text-align: center;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+    .banner-stat:last-child { border-right: none; }
+    .banner-stat-value {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 32px;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: block;
+    }
+    .banner-stat-label { font-size: 13px; color: rgba(255,255,255,0.6); margin-top: 4px; }
+
+    /* ==============================
+       CONTACT
+    ============================== */
+    #contact { background: var(--gray-bg); padding: 96px 0; }
+    .contact-header { text-align: center; margin-bottom: 56px; }
+    .contact-header h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: clamp(26px, 3.5vw, 44px);
+      color: var(--dark);
+    }
+    .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+    .form-card {
+      background: #fff;
+      border-radius: var(--radius-card);
+      padding: 40px;
+      box-shadow: var(--shadow);
+    }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group.full { grid-column: 1 / -1; }
+    .form-group label { font-size: 13px; font-weight: 600; color: #374151; }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: var(--dark);
+      background: #fff;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(0,127,255,0.1);
+    }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-submit-wrap { margin-top: 20px; }
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 32px;
+    }
+    .form-success-icon { font-size: 48px; margin-bottom: 12px; }
+    .form-success h3 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 20px; color: var(--dark); margin-bottom: 8px; }
+    .form-success p { font-size: 14px; color: var(--text-muted); }
+    .contact-right { padding-top: 8px; }
+    .contact-right h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 22px;
+      color: var(--dark);
+      margin-bottom: 24px;
+    }
+    .contact-benefits { display: flex; flex-direction: column; gap: 20px; margin-bottom: 36px; }
+    .contact-benefit { display: flex; align-items: flex-start; gap: 14px; }
+    .benefit-icon {
+      width: 44px; height: 44px;
+      background: rgba(0,127,255,0.08);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    .benefit-text h4 { font-weight: 600; font-size: 15px; color: var(--dark); margin-bottom: 2px; }
+    .benefit-text p { font-size: 13px; color: var(--text-muted); }
+    .contact-sarah-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--blue);
+      padding: 14px 0;
+      border-bottom: 2px solid rgba(0,127,255,0.2);
+      transition: border-color 0.2s;
+      cursor: pointer;
+    }
+    .contact-sarah-link:hover { border-color: var(--blue); }
+
+    /* ==============================
+       FOOTER
+    ============================== */
+    #footer { background: var(--dark); padding: 64px 0 32px; }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1.2fr 1fr;
+      gap: 40px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      margin-bottom: 32px;
+    }
+    .footer-brand {}
+    .footer-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+    .footer-logo img {
+      height: 28px;
+      width: auto;
+      display: block;
+      filter: brightness(0) invert(1);
+    }
+    .footer-tagline { font-size: 13px; color: rgba(255,255,255,0.45); }
+    .footer-col h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .footer-col ul { display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul li a {
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
+      transition: color 0.2s;
+    }
+    .footer-col ul li a:hover { color: #fff; }
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-copy { font-size: 12px; color: rgba(255,255,255,0.35); }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { font-size: 12px; color: rgba(255,255,255,0.45); transition: color 0.2s; }
+    .footer-links a:hover { color: #fff; }
+    .footer-trademark { font-size: 11px; color: rgba(255,255,255,0.25); margin-top: 16px; }
+
+    /* ==============================
+       RESPONSIVE
+    ============================== */
+    @media (max-width: 1024px) {
+      .solution-inner { grid-template-columns: 1fr; }
+      .solution-metric { text-align: center; }
+      .solution-metric-value { font-size: 72px; }
+      .bento-grid { grid-template-columns: repeat(2, 1fr); }
+      .gartner-inner { grid-template-columns: 1fr; gap: 40px; }
+      .gartner-right { display: none; }
+      .steps-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+      .steps-grid::before { display: none; }
+      .footer-top { grid-template-columns: repeat(2, 1fr); }
+      .footer-brand { grid-column: 1 / -1; }
+    }
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .hero-stats { flex-wrap: wrap; }
+      .hero-stat { flex: 1 1 40%; border-right: none; border-bottom: 1px solid var(--border); }
+      .hero-stat:nth-child(odd) { border-right: 1px solid var(--border); }
+      .hero-stat:nth-last-child(-n+2) { border-bottom: none; }
+      .problems-grid { grid-template-columns: 1fr; }
+      .bento-grid { grid-template-columns: 1fr; }
+      .steps-grid { grid-template-columns: 1fr; }
+      .sarah-inner { grid-template-columns: 1fr; }
+      .sarah-right { display: none; }
+      .stories-grid { grid-template-columns: 1fr; }
+      .stats-banner { grid-template-columns: repeat(2, 1fr); }
+      .banner-stat:nth-child(2) { border-right: none; }
+      .contact-inner { grid-template-columns: 1fr; }
+      .form-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; }
+      .trust-inner { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 480px) {
+      .hero-ctas { flex-direction: column; align-items: stretch; }
+      .hero-ctas .btn { text-align: center; justify-content: center; }
+      .form-card { padding: 24px; }
+    }
+  </style>
 </head>
 <body>
 
@@ -22,11 +947,7 @@
     <div class="nav-inner">
 
       <a href="#hero" class="nav-logo" aria-label="Redegal — Ir al inicio">
-        <div class="nav-logo-mark" aria-hidden="true">R</div>
-        <div class="nav-logo-text">
-          Redegal
-          <span>Shopify Plus Partner</span>
-        </div>
+        <img src="redegal-logo.svg" alt="Redegal" />
       </a>
 
       <ul class="nav-links" role="list">
@@ -34,58 +955,51 @@
         <li><a href="#solution">Solución</a></li>
         <li><a href="#comparison">Comparativa</a></li>
         <li><a href="#methodology">Metodología</a></li>
-        <li><a href="#stories">Casos de Éxito</a></li>
-        <li><a href="#contact" class="nav-cta">
-          Agendar diagnóstico
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-            <path d="M2.5 7h9M8 4l3.5 3L8 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a></li>
+        <li><a href="#stories">Casos</a></li>
       </ul>
 
-      <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
+      <div class="nav-cta">
+        <a href="#contact" class="btn btn-primary">Diagnóstico Gratuito →</a>
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
       </button>
 
-    </div><!-- /nav-inner -->
-
-    <nav class="nav-mobile" id="mobile-nav" aria-label="Menú móvil">
-      <a href="#problems">Problemáticas</a>
-      <a href="#solution">Solución</a>
-      <a href="#comparison">Comparativa</a>
-      <a href="#methodology">Metodología</a>
-      <a href="#stories">Casos de Éxito</a>
-      <a href="#contact">Agendar diagnóstico</a>
-    </nav>
+    </div>
   </div>
 </nav>
 
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Menú principal">
+  <ul>
+    <li><a href="#problems" class="mobile-nav-link">Problemáticas</a></li>
+    <li><a href="#solution" class="mobile-nav-link">Solución</a></li>
+    <li><a href="#comparison" class="mobile-nav-link">Comparativa</a></li>
+    <li><a href="#methodology" class="mobile-nav-link">Metodología</a></li>
+    <li><a href="#stories" class="mobile-nav-link">Casos de Éxito</a></li>
+  </ul>
+  <a href="#contact" class="btn btn-primary" style="width:100%;justify-content:center;">Diagnóstico Gratuito →</a>
+</div>
 
 <!-- ══════════════════════════════════════════════
      HERO
 ══════════════════════════════════════════════ -->
-<section id="hero" aria-label="Sección principal">
+<section id="hero" aria-labelledby="hero-h1">
+  <div class="hero-orb" aria-hidden="true"></div>
+  <div class="hero-orb-2" aria-hidden="true"></div>
+  <div class="container">
+    <div class="hero-inner">
 
-  <div class="hero-mesh" aria-hidden="true">
-    <div class="hero-mesh-extra"></div>
-  </div>
-  <div class="hero-grid" aria-hidden="true"></div>
-
-  <div class="hero-content">
-    <div class="container">
-
-      <div class="hero-badge" role="status">
+      <div class="hero-badge" aria-label="Certificación">
         <span class="hero-badge-dot" aria-hidden="true"></span>
-        Shopify Plus Partner Certificado · México &amp; LATAM
+        Shopify Plus Partner Certificado · Migración sin riesgo
       </div>
 
-      <p class="hero-eyebrow">Migración Enterprise sin riesgo</p>
+      <p class="hero-eyebrow">Migración Enterprise</p>
 
-      <h1 class="hero-title">
-        <span class="line-muted">La pregunta no es si migrar,</span>
-        <span class="gradient-text">¿Por qué migrar<br>a Shopify Plus?</span>
+      <h1 class="hero-h1" id="hero-h1">
+        <span class="line1">La pregunta no es si migrar,</span>
+        <span class="line2">¿Por qué migrar a <span class="text-gradient">Shopify Plus</span>?</span>
       </h1>
 
       <p class="hero-subtitle">
@@ -94,1090 +1008,632 @@
         con metodología probada y riesgo cero.
       </p>
 
-      <div class="hero-actions">
-        <a href="#contact" class="btn-primary">
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-            <rect x="2" y="5" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/>
-            <path d="M2 8l7 4 7-4" stroke="currentColor" stroke-width="1.5"/>
-          </svg>
-          Agendar diagnóstico gratuito
-        </a>
-        <a href="#comparison" class="btn-ghost">
-          Ver comparativa de plataformas
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-            <path d="M2.5 7h9M8 4l3.5 3L8 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn btn-primary">Agendar diagnóstico →</a>
+        <button class="btn btn-outline" data-open-sarah>Hablar con Sarah</button>
       </div>
 
-    </div><!-- /container -->
-  </div><!-- /hero-content -->
-
-  <!-- Floating stats bar -->
-  <div class="hero-stats" id="hero-stats" aria-label="Métricas clave">
-    <div class="container">
-      <div class="hero-stats-inner">
-
-        <div class="hero-stat-item">
-          <span class="hero-stat-value gradient-text-blue"
-            data-counter="60"
-            data-suffix="%"
-            aria-label="60% menos TCO">0%</span>
-          <span class="hero-stat-label">Reducción de TCO</span>
+      <div class="hero-stats" role="list" aria-label="Métricas clave">
+        <div class="hero-stat" role="listitem">
+          <span class="hero-stat-value" data-countup data-target="60" data-suffix="%">60%</span>
+          <span class="hero-stat-label">Menos TCO</span>
         </div>
-
-        <div class="hero-stat-item">
-          <span class="hero-stat-value gradient-text-blue"
-            data-counter="36"
-            data-suffix="%"
-            data-prefix="+"
-            aria-label="+36% conversión promedio">0%</span>
-          <span class="hero-stat-label">Conversión Promedio</span>
+        <div class="hero-stat" role="listitem">
+          <span class="hero-stat-value" data-countup data-prefix="+" data-target="36" data-suffix="%">+36%</span>
+          <span class="hero-stat-label">Conversión</span>
         </div>
-
-        <div class="hero-stat-item">
-          <span class="hero-stat-value gradient-text-blue"
-            data-counter="99.99"
-            data-suffix="%"
-            aria-label="99.99% uptime garantizado">0%</span>
-          <span class="hero-stat-label">Uptime Garantizado</span>
+        <div class="hero-stat" role="listitem">
+          <span class="hero-stat-value">99.99%</span>
+          <span class="hero-stat-label">Uptime</span>
         </div>
-
-        <div class="hero-stat-item">
-          <span class="hero-stat-value gradient-text-blue"
-            data-counter="12"
-            data-suffix=" sem"
-            aria-label="12 semanas promedio de migración">0 sem</span>
-          <span class="hero-stat-label">Migración Promedio</span>
+        <div class="hero-stat" role="listitem">
+          <span class="hero-stat-value">8-16 sem</span>
+          <span class="hero-stat-label">Tiempo migración</span>
         </div>
-
       </div>
+
     </div>
   </div>
-
 </section>
-
 
 <!-- ══════════════════════════════════════════════
      TRUST BAR
 ══════════════════════════════════════════════ -->
-<section id="trust-bar" aria-label="Marcas de confianza">
+<section id="trust" aria-label="Confianza de marca">
   <div class="container">
-    <p class="trust-label">Marcas que confían en Shopify Plus en México</p>
-  </div>
-
-  <div class="marquee-wrapper" role="img" aria-label="Clientes: Chopo, Banco Azteca, ITALIKA, Gandhi, Grupo Herdez, Nutrisa, Elektra, Palacio de Hierro, Grupo Modelo, Coppel">
-    <div class="marquee-track" id="marquee-track">
-      <div class="marquee-item"><span>Chopo</span></div>
-      <div class="marquee-item"><span>Banco Azteca</span></div>
-      <div class="marquee-item"><span>ITALIKA</span></div>
-      <div class="marquee-item"><span>Gandhi</span></div>
-      <div class="marquee-item"><span>Grupo Herdez</span></div>
-      <div class="marquee-item"><span>Nutrisa</span></div>
-      <div class="marquee-item"><span>Elektra</span></div>
-      <div class="marquee-item"><span>Palacio de Hierro</span></div>
-      <div class="marquee-item"><span>Grupo Modelo</span></div>
-      <div class="marquee-item"><span>Coppel</span></div>
+    <div class="trust-inner">
+      <p class="trust-text">Confianza de más de 32.000 marcas enterprise en 175 países</p>
+      <div class="trust-logos" role="list" aria-label="Partners y certificaciones">
+        <span class="trust-pill highlight" role="listitem">Shopify Plus Partner</span>
+        <span class="trust-pill" role="listitem">Adobe Commerce Partner</span>
+        <span class="trust-pill" role="listitem">Google Premier Partner</span>
+        <span class="trust-pill" role="listitem">BME Growth: RDG</span>
+      </div>
     </div>
   </div>
 </section>
 
-
 <!-- ══════════════════════════════════════════════
-     PLATFORM PROBLEMS
+     PROBLEMS
 ══════════════════════════════════════════════ -->
-<section id="problems" aria-labelledby="problems-title">
+<section id="problems" aria-labelledby="problems-h2">
   <div class="container">
 
-    <div class="section-header reveal">
+    <div class="problems-header reveal">
       <span class="section-label">Costos reales</span>
-      <h2 class="section-title" id="problems-title">
-        Los costos ocultos de tu<br>plataforma actual
-      </h2>
-      <p class="section-subtitle">
-        Las plataformas legacy tienen modelos de negocio que crecen contra ti.
-        Cada año que esperas, el gap frente a Shopify Plus se amplía.
-      </p>
+      <h2 id="problems-h2">Los costos ocultos de tu plataforma actual</h2>
+      <p>Las plataformas legacy tienen modelos de negocio que crecen contra ti.</p>
     </div>
 
     <div class="problems-grid">
 
-      <!-- VTEX -->
-      <div class="problem-card card-vtex reveal reveal-delay-1" role="article">
-        <div class="problem-card-bg" aria-hidden="true"></div>
-        <span class="problem-platform-tag tag-vtex">VTEX</span>
-        <h3 class="problem-card-title">Revenue Share que no para de crecer</h3>
-        <p class="problem-card-tagline">"Crece contra ti"</p>
-        <div class="problem-metrics">
-          <div class="problem-metric">
-            <svg class="problem-metric-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-              <circle cx="10" cy="10" r="8" stroke="#ff8a5c" stroke-width="1.5"/>
-              <path d="M10 6v4l3 2" stroke="#ff8a5c" stroke-width="1.5" stroke-linecap="round"/>
-            </svg>
-            <span class="problem-metric-text"><strong>Revenue share del 0.5%–2%</strong> sobre ventas — cuanto más vendes, más pagas</span>
-          </div>
-          <div class="problem-metric">
-            <svg class="problem-metric-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-              <path d="M4 10h12M4 6h12M4 14h8" stroke="#ff8a5c" stroke-width="1.5" stroke-linecap="round"/>
-            </svg>
-            <span class="problem-metric-text"><strong>Lock-in propietario:</strong> ecosistema cerrado, migraciones costosas y complejas</span>
-          </div>
-          <div class="problem-metric">
-            <svg class="problem-metric-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-              <rect x="3" y="3" width="14" height="14" rx="2" stroke="#ff8a5c" stroke-width="1.5"/>
-              <path d="M3 8h14" stroke="#ff8a5c" stroke-width="1.5"/>
-            </svg>
-            <span class="problem-metric-text"><strong>Marketplace limitado:</strong> ~500 apps vs 10,000+ de Shopify</span>
-          </div>
+      <article class="problem-card reveal" style="border-color: #e84242;" aria-label="Problemáticas de VTEX">
+        <div class="problem-card-header">
+          <div class="problem-platform" style="color: #e84242;">VTEX</div>
         </div>
-        <span class="problem-verdict" role="note">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-            <path d="M6 2v4M6 9.5v.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
-          Modelo que escala en tu contra
-        </span>
-      </div>
-
-      <!-- Adobe Commerce -->
-      <div class="problem-card card-adobe reveal reveal-delay-2" role="article">
-        <div class="problem-card-bg" aria-hidden="true"></div>
-        <span class="problem-platform-tag tag-adobe">Adobe Commerce</span>
-        <h3 class="problem-card-title">TCO entre $200K y $500K+ anuales</h3>
-        <p class="problem-card-tagline">"Infraestructura sin retorno"</p>
-        <div class="problem-metrics">
-          <div class="problem-metric">
-            <svg class="problem-metric-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-              <path d="M10 3v14M6 7l4-4 4 4" stroke="#ff7070" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <span class="problem-metric-text"><strong>Licencia anual: $22K–$125K+</strong> según GMV, con renovación obligatoria</span>
-          </div>
-          <div class="problem-metric">
-            <svg class="problem-metric-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-              <circle cx="10" cy="10" r="7" stroke="#ff7070" stroke-width="1.5"/>
-              <path d="M7 10l2 2 4-4" stroke="#ff7070" stroke-width="1.5" stroke-linecap="round"/>
-            </svg>
-            <span class="problem-metric-text"><strong>DevOps y servidores: $80K–$120K/año</strong> solo para mantener la plataforma viva</span>
-          </div>
-          <div class="problem-metric">
-            <svg class="problem-metric-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-              <path d="M4 16l4-8 4 4 2-3 2 7H4z" stroke="#ff7070" stroke-width="1.5" stroke-linejoin="round"/>
-            </svg>
-            <span class="problem-metric-text"><strong>Actualizaciones críticas</strong> requieren dev customizado — ciclos de 6–12 meses</span>
-          </div>
+        <p class="problem-card-title">Revenue Share que no para de crecer</p>
+        <div class="problem-details">
+          <div class="problem-detail">Revenue share del 0.25% sobre GMV, crece con tu éxito</div>
+          <div class="problem-detail">Desarrollo custom: $80K–$150K/año adicionales</div>
+          <div class="problem-detail">Time-to-market de 6–18 meses para nuevas funcionalidades</div>
         </div>
-        <span class="problem-verdict" role="note">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-            <path d="M6 2v4M6 9.5v.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
-          TCO injustificable para eCommerce
-        </span>
-      </div>
+      </article>
 
-      <!-- SAP Commerce Cloud -->
-      <div class="problem-card card-sap reveal reveal-delay-3" role="article">
-        <div class="problem-card-bg" aria-hidden="true"></div>
-        <span class="problem-platform-tag tag-sap">SAP Commerce Cloud</span>
-        <h3 class="problem-card-title">TCO de $300K hasta $1M+ anuales</h3>
-        <p class="problem-card-tagline">"Enterprise sin agilidad"</p>
-        <div class="problem-metrics">
-          <div class="problem-metric">
-            <svg class="problem-metric-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-              <path d="M3 10h14M10 3v14" stroke="#5cb4ff" stroke-width="1.5" stroke-linecap="round"/>
-            </svg>
-            <span class="problem-metric-text"><strong>Licencia $54K–$500K+</strong> más infraestructura SAP obligatoria</span>
-          </div>
-          <div class="problem-metric">
-            <svg class="problem-metric-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-              <rect x="4" y="4" width="5" height="5" rx="1" stroke="#5cb4ff" stroke-width="1.5"/>
-              <rect x="11" y="11" width="5" height="5" rx="1" stroke="#5cb4ff" stroke-width="1.5"/>
-              <path d="M9 6.5h2M11 6.5v4" stroke="#5cb4ff" stroke-width="1.5" stroke-linecap="round"/>
-            </svg>
-            <span class="problem-metric-text"><strong>Java propietario:</strong> talento escaso y caro — $120K–$180K salario por dev especializado</span>
-          </div>
-          <div class="problem-metric">
-            <svg class="problem-metric-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-              <path d="M6 14l8-8M10 6h4v4" stroke="#5cb4ff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <span class="problem-metric-text"><strong>Time-to-market 3–6x más lento</strong> que Shopify Plus para nuevas funcionalidades</span>
-          </div>
+      <article class="problem-card reveal" style="border-color: #ff6922;" aria-label="Problemáticas de Adobe Commerce">
+        <div class="problem-card-header">
+          <div class="problem-platform" style="color: #ff6922;">Adobe Commerce</div>
         </div>
-        <span class="problem-verdict" role="note">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-            <path d="M6 2v4M6 9.5v.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
-          Complejidad sin ventaja competitiva
-        </span>
-      </div>
-
-      <!-- WooCommerce -->
-      <div class="problem-card card-woo reveal reveal-delay-4" role="article">
-        <div class="problem-card-bg" aria-hidden="true"></div>
-        <span class="problem-platform-tag tag-woo">WooCommerce</span>
-        <h3 class="problem-card-title">El riesgo que no ves hasta que pasa</h3>
-        <p class="problem-card-tagline">"Alto riesgo"</p>
-        <div class="problem-metrics">
-          <div class="problem-metric">
-            <svg class="problem-metric-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-              <path d="M10 3l7 12H3L10 3z" stroke="#c39aff" stroke-width="1.5" stroke-linejoin="round"/>
-              <path d="M10 9v3M10 14v.5" stroke="#c39aff" stroke-width="1.5" stroke-linecap="round"/>
-            </svg>
-            <span class="problem-metric-text"><strong>Seguridad bajo tu responsabilidad:</strong> 41% de todos los eCommerce hackeados son WooCommerce</span>
-          </div>
-          <div class="problem-metric">
-            <svg class="problem-metric-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-              <path d="M4 6h12v8a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM2 6h16M8 6V4h4v2" stroke="#c39aff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <span class="problem-metric-text"><strong>Sin escalabilidad real:</strong> el Black Friday puede tirar tu tienda con 10x tráfico</span>
-          </div>
-          <div class="problem-metric">
-            <svg class="problem-metric-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-              <path d="M6 10h.01M10 10h.01M14 10h.01" stroke="#c39aff" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-            <span class="problem-metric-text"><strong>Conflictos de plugins:</strong> cada actualización puede romper funcionalidades críticas</span>
-          </div>
+        <p class="problem-card-title">TCO entre $200K y $500K+ anuales</p>
+        <div class="problem-details">
+          <div class="problem-detail">Licencias desde $50K anuales solo por acceso</div>
+          <div class="problem-detail">DevOps y sysadmin: $80K–$120K/año continuos</div>
+          <div class="problem-detail">Upgrades de versión costosos y disruptivos</div>
         </div>
-        <span class="problem-verdict" role="note">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-            <path d="M6 2v4M6 9.5v.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
-          Riesgo inaceptable a escala
-        </span>
-      </div>
+      </article>
 
-    </div><!-- /problems-grid -->
+      <article class="problem-card reveal" style="border-color: #0070f2;" aria-label="Problemáticas de SAP Commerce">
+        <div class="problem-card-header">
+          <div class="problem-platform" style="color: #0070f2;">SAP Commerce</div>
+        </div>
+        <p class="problem-card-title">TCO de $300K hasta $1M+ anuales</p>
+        <div class="problem-details">
+          <div class="problem-detail">Implementación inicial de 18–24 meses</div>
+          <div class="problem-detail">Integración SAP extremadamente compleja y costosa</div>
+          <div class="problem-detail">Requiere consultoras especializadas y equipos dedicados</div>
+        </div>
+      </article>
+
+      <article class="problem-card reveal" style="border-color: #7f54b3;" aria-label="Problemáticas de WooCommerce">
+        <div class="problem-card-header">
+          <div class="problem-platform" style="color: #7f54b3;">WooCommerce</div>
+        </div>
+        <p class="problem-card-title">El riesgo que no ves hasta que pasa</p>
+        <div class="problem-details">
+          <div class="problem-detail">No escala a nivel enterprise: colapsos en picos de tráfico</div>
+          <div class="problem-detail">847 plugins de media: superficie de ataque enorme</div>
+          <div class="problem-detail">Sin PCI DSS nativo — compliance a tu cuenta y riesgo</div>
+        </div>
+      </article>
+
+    </div>
   </div>
 </section>
 
-
 <!-- ══════════════════════════════════════════════
-     SOLUTION — SHOPIFY PLUS
+     SOLUTION
 ══════════════════════════════════════════════ -->
-<section id="solution" aria-labelledby="solution-title">
+<section id="solution" aria-labelledby="solution-h2">
   <div class="container">
 
     <div class="solution-header reveal">
-      <span class="section-label">Shopify Plus</span>
-      <h2 class="section-title" id="solution-title">
-        Una plataforma construida<br>
-        <span class="gradient-text">para el crecimiento real</span>
-      </h2>
-      <p class="section-subtitle" style="color: rgba(255,255,255,0.6);">
-        10,000+ apps, infraestructura de Google Cloud, checkout optimizado para conversión.
-        Todo gestionado por Shopify, para que tu equipo se enfoque en vender.
-      </p>
+      <span class="section-label light">Shopify Plus</span>
+      <h2 id="solution-h2">Una plataforma construida para escalar</h2>
     </div>
 
-    <!-- Metrics row -->
-    <div class="metrics-row reveal" role="list" aria-label="Métricas de Shopify Plus">
+    <div class="solution-inner">
 
-      <div class="metric-card" role="listitem">
-        <div class="metric-value">99.99%</div>
-        <div class="metric-label">Uptime<br>Garantizado</div>
+      <div class="solution-metric reveal">
+        <div class="solution-metric-value" data-countup data-target="60" data-suffix="%" aria-label="60 por ciento">60%</div>
+        <div class="solution-metric-label">Menor TCO vs<br>Plataformas Legacy</div>
+        <div class="solution-metric-sub">Ahorro real calculado sobre proyectos reales<br>en los primeros 24 meses post-migración</div>
       </div>
 
-      <div class="metric-card" role="listitem">
-        <div class="metric-value">+36%</div>
-        <div class="metric-label">Aumento en<br>Conversión</div>
-      </div>
+      <div class="bento-grid reveal">
 
-      <div class="metric-card" role="listitem">
-        <div class="metric-value">60%</div>
-        <div class="metric-label">Menor TCO<br>vs Plataformas Legacy</div>
-      </div>
+        <div class="bento-card">
+          <div class="bento-icon" aria-hidden="true">🛒</div>
+          <div class="bento-title">Checkout Optimizado</div>
+          <div class="bento-desc">+36% conversión con checkout one-page nativo y Shop Pay integrado desde el día uno.</div>
+        </div>
 
-      <div class="metric-card" role="listitem">
-        <div class="metric-value">10K+</div>
-        <div class="metric-label">Apps en<br>Shopify App Store</div>
-      </div>
+        <div class="bento-card">
+          <div class="bento-icon" aria-hidden="true">⚡</div>
+          <div class="bento-title">Hydrogen — Headless Commerce</div>
+          <div class="bento-desc">Framework React-based para performance extrema. SSR y SSG nativos para máximo SEO.</div>
+        </div>
 
-      <div class="metric-card" role="listitem">
-        <div class="metric-value">PCI L1</div>
-        <div class="metric-label">Cumplimiento<br>de Seguridad</div>
-      </div>
+        <div class="bento-card">
+          <div class="bento-icon" aria-hidden="true">🏢</div>
+          <div class="bento-title">B2B Nativo</div>
+          <div class="bento-desc">Portales wholesale, precios por cuenta, pedidos mínimos y catálogos personalizados sin plugins.</div>
+        </div>
 
-      <div class="metric-card" role="listitem">
-        <div class="metric-value">Auto</div>
-        <div class="metric-label">Updates sin<br>intervención manual</div>
-      </div>
+        <div class="bento-card">
+          <div class="bento-icon" aria-hidden="true">🔄</div>
+          <div class="bento-title">Omnicanal Real</div>
+          <div class="bento-desc">POS, marketplace, social commerce y ecommerce unificados en un solo panel de control.</div>
+        </div>
 
+        <div class="bento-card">
+          <div class="bento-icon" aria-hidden="true">⚙️</div>
+          <div class="bento-title">Flow — Automatización</div>
+          <div class="bento-desc">Cero código. Automatiza procesos de negocio complejos: fulfillment, marketing, retención.</div>
+        </div>
+
+        <div class="bento-card">
+          <div class="bento-icon" aria-hidden="true">🔌</div>
+          <div class="bento-title">API GraphQL Empresarial</div>
+          <div class="bento-desc">Integraciones sin límites con ERP, CRM y sistemas legados. Headless-ready por diseño.</div>
+        </div>
+
+      </div>
     </div>
-
-    <!-- Bento grid features -->
-    <div class="bento-grid" role="list" aria-label="Funcionalidades Shopify Plus">
-
-      <div class="bento-card bento-card-1 reveal reveal-delay-1" role="listitem">
-        <div class="bento-icon" aria-hidden="true">🛒</div>
-        <h3 class="bento-title">Checkout Optimizado</h3>
-        <p class="bento-desc">Checkout.liquid completamente personalizable. Hasta +36% de conversión con checkout de una sola página y Shop Pay integrado.</p>
-        <span class="bento-tag">+36% conversión</span>
-      </div>
-
-      <div class="bento-card bento-card-2 reveal reveal-delay-2" role="listitem">
-        <div class="bento-icon" aria-hidden="true">⚡</div>
-        <h3 class="bento-title">Hydrogen — Headless Commerce</h3>
-        <p class="bento-desc">Framework React de Shopify para experiencias headless ultra-rápidas. Core Web Vitals perfectos, SEO optimizado desde el día uno. PWA nativa.</p>
-        <span class="bento-tag">Headless ready</span>
-      </div>
-
-      <div class="bento-card bento-card-3 reveal reveal-delay-3" role="listitem">
-        <div class="bento-icon" aria-hidden="true">🏭</div>
-        <h3 class="bento-title">B2B Nativo</h3>
-        <p class="bento-desc">Catálogos personalizados, precios por cliente, términos de pago netos. Sin apps de terceros, sin costos extra.</p>
-        <span class="bento-tag">Enterprise B2B</span>
-      </div>
-
-      <div class="bento-card bento-card-4 reveal reveal-delay-1" role="listitem">
-        <div class="bento-icon" aria-hidden="true">🌐</div>
-        <h3 class="bento-title">Omnicanal Real</h3>
-        <p class="bento-desc">POS, marketplace (Amazon, MercadoLibre, Walmart), redes sociales y tienda web — todo en un solo panel con inventario unificado.</p>
-        <span class="bento-tag">Inventario unificado</span>
-      </div>
-
-      <div class="bento-card bento-card-5 reveal reveal-delay-2" role="listitem">
-        <div class="bento-icon" aria-hidden="true">🤖</div>
-        <h3 class="bento-title">Flow — Automatización</h3>
-        <p class="bento-desc">Automatiza fulfillment, etiquetado, notificaciones y fraude sin una línea de código. 500+ triggers y acciones predefinidos.</p>
-        <span class="bento-tag">No-code automation</span>
-      </div>
-
-      <div class="bento-card bento-card-6 reveal reveal-delay-3" role="listitem">
-        <div class="bento-icon" aria-hidden="true">🔌</div>
-        <h3 class="bento-title">API GraphQL Empresarial</h3>
-        <p class="bento-desc">Storefront API + Admin API GraphQL + Webhooks en tiempo real. Integración nativa con ERP (SAP, Oracle), CRM (Salesforce, HubSpot) y cualquier sistema empresarial sin middleware costoso.</p>
-        <span class="bento-tag">Enterprise integrations</span>
-      </div>
-
-    </div><!-- /bento-grid -->
-
   </div>
 </section>
 
+<!-- ══════════════════════════════════════════════
+     GARTNER
+══════════════════════════════════════════════ -->
+<section id="gartner" aria-labelledby="gartner-h2">
+  <div class="container">
+    <div class="gartner-inner">
+
+      <div class="gartner-left reveal">
+        <span class="section-label">Reconocimiento Global</span>
+        <h2 id="gartner-h2">Gartner Magic Quadrant</h2>
+        <h3>Leader en Digital Commerce — 3 años consecutivos</h3>
+
+        <div class="gartner-years" aria-label="Años de reconocimiento Gartner">
+          <span class="year-badge">2023</span>
+          <span class="year-badge">2024</span>
+          <span class="year-badge">2025</span>
+        </div>
+
+        <blockquote class="gartner-quote">
+          "Shopify es reconocido por su facilidad de uso, ecosistema de apps
+          y capacidad de personalización a escala enterprise, siendo referente
+          indiscutible en el cuadrante de líderes del comercio digital."
+        </blockquote>
+
+        <p class="gartner-legal">Fuente: Gartner Magic Quadrant for Digital Commerce. Gartner no respalda ningún proveedor, producto o servicio específico en sus publicaciones de investigación. La posición en el Gartner Magic Quadrant refleja la opinión de la organización de investigación en un momento determinado.</p>
+      </div>
+
+      <div class="gartner-right reveal">
+        <div class="gartner-visual" aria-hidden="true">
+          <div class="gartner-visual-icon">🏆</div>
+          <div class="gartner-visual-title">Magic Quadrant Leader</div>
+          <div class="gartner-visual-sub">Digital Commerce · Gartner 2023–2025</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 <!-- ══════════════════════════════════════════════
      COMPARISON TABLE
 ══════════════════════════════════════════════ -->
-<section id="comparison" aria-labelledby="comparison-title">
+<section id="comparison" aria-labelledby="comparison-h2">
   <div class="container">
 
-    <div class="section-header reveal">
-      <span class="section-label">Comparativa de migración</span>
-      <h2 class="section-title" id="comparison-title" style="color: #0a0a1a;">
-        ¿Cuánto cuesta migrar<br>desde tu plataforma actual?
-      </h2>
-      <p class="section-subtitle">
-        Comparativa técnica y financiera de migración enterprise a Shopify Plus.
-        Cifras basadas en proyectos reales de 2022–2025.
-      </p>
+    <div class="comparison-header reveal">
+      <h2 id="comparison-h2">¿Cuánto cuesta migrar desde tu plataforma actual?</h2>
     </div>
 
-    <div class="comparison-table-wrap reveal" role="region" aria-label="Tabla comparativa de migración">
-      <table class="comparison-table" role="table">
-        <caption class="visually-hidden">Comparativa de migración a Shopify Plus desde diferentes plataformas</caption>
+    <div class="table-wrap reveal" role="region" aria-label="Tabla comparativa de plataformas" tabindex="0">
+      <table>
         <thead>
           <tr>
             <th scope="col">Criterio</th>
-            <th scope="col">Desde VTEX</th>
-            <th scope="col">Desde Adobe Commerce</th>
-            <th scope="col">Desde SAP Commerce</th>
-            <th scope="col">Desde WooCommerce</th>
+            <th scope="col">VTEX</th>
+            <th scope="col">Adobe Commerce</th>
+            <th scope="col">SAP Commerce</th>
+            <th scope="col">WooCommerce</th>
+            <th scope="col" class="col-plus">Shopify Plus ✓</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Duración estimada</td>
-            <td><span class="badge-low badge-yellow">8–12 semanas</span></td>
-            <td><span class="badge-low badge-orange">12–16 semanas</span></td>
-            <td><span class="badge-low badge-red">16–24 semanas</span></td>
-            <td><span class="badge-low badge-green">4–8 semanas</span></td>
+            <td>Tiempo migración</td>
+            <td>6–12 meses</td>
+            <td>12–18 meses</td>
+            <td>18–24 meses</td>
+            <td>3–6 meses</td>
+            <td class="col-plus-cell check">8–16 semanas ✓</td>
           </tr>
           <tr>
-            <td>Complejidad técnica</td>
-            <td><span class="badge-low badge-yellow">Media</span></td>
-            <td><span class="badge-low badge-orange">Alta</span></td>
-            <td><span class="badge-low badge-red">Muy Alta</span></td>
-            <td><span class="badge-low badge-green">Baja–Media</span></td>
+            <td>Riesgo SEO</td>
+            <td>Alto</td>
+            <td>Alto</td>
+            <td>Muy Alto</td>
+            <td>Medio</td>
+            <td class="col-plus-cell check">Bajo ✓</td>
           </tr>
           <tr>
-            <td>Riesgo de migración</td>
-            <td><span class="badge-low badge-green">Bajo</span></td>
-            <td><span class="badge-low badge-yellow">Medio</span></td>
-            <td><span class="badge-low badge-orange">Medio–Alto</span></td>
-            <td><span class="badge-low badge-green">Bajo</span></td>
+            <td>TCO anual</td>
+            <td>$150–300K</td>
+            <td>$200–500K</td>
+            <td>$300K–1M+</td>
+            <td>$50–150K</td>
+            <td class="col-plus-cell check">Desde $2K/mes ✓</td>
           </tr>
           <tr>
-            <td>Impacto SEO</td>
-            <td>Mínimo con 301</td>
-            <td>Mínimo con 301</td>
-            <td>Manejable con 301</td>
-            <td>Mínimo con 301</td>
+            <td>B2B nativo</td>
+            <td class="cross">No</td>
+            <td>Limitado</td>
+            <td class="check">Sí</td>
+            <td class="cross">No</td>
+            <td class="col-plus-cell check">Sí ✓</td>
           </tr>
           <tr>
-            <td>Datos a migrar</td>
-            <td>Productos, clientes, órdenes, blog</td>
-            <td>Catálogo complejo, CMS, segmentos</td>
-            <td>Catálogo SAP, precios, contratos B2B</td>
-            <td>WP DB, WooCommerce tables, media</td>
+            <td>Headless / API</td>
+            <td>Limitado</td>
+            <td>Limitado</td>
+            <td class="cross">No</td>
+            <td class="cross">No</td>
+            <td class="col-plus-cell check">Nativo ✓</td>
           </tr>
           <tr>
-            <td>Ahorro TCO Año 1</td>
-            <td><span class="badge-low badge-blue">30–50%</span></td>
-            <td><span class="badge-low badge-blue">50–70%</span></td>
-            <td><span class="badge-low badge-blue">60–80%</span></td>
-            <td><span class="badge-low badge-blue">20–40%</span></td>
+            <td>Soporte 24/7</td>
+            <td class="cross">❌</td>
+            <td class="cross">❌</td>
+            <td class="cross">❌</td>
+            <td class="cross">❌</td>
+            <td class="col-plus-cell check">✓ ✓</td>
           </tr>
           <tr>
-            <td>ROI estimado</td>
-            <td><span class="badge-low badge-green">6–9 meses</span></td>
-            <td><span class="badge-low badge-green">3–6 meses</span></td>
-            <td><span class="badge-low badge-green">3–6 meses</span></td>
-            <td><span class="badge-low badge-yellow">4–8 meses</span></td>
-          </tr>
-          <tr>
-            <td>Integraciones ERP/CRM</td>
-            <td>Media complejidad</td>
-            <td>Alta (conectores nativos SAP)</td>
-            <td>Alta (SAP stack completo)</td>
-            <td>Baja complejidad</td>
+            <td>Automatización</td>
+            <td>Manual</td>
+            <td>Limitada</td>
+            <td>Manual</td>
+            <td>Plugins</td>
+            <td class="col-plus-cell check">Flow ✓</td>
           </tr>
         </tbody>
       </table>
     </div>
 
-    <p class="reveal" style="text-align:center; margin-top:2rem; font-size:0.8rem; color:rgba(10,10,26,0.4);">
-      * Cifras orientativas. El análisis exacto depende del volumen de SKUs, integraciones y customizaciones actuales. Agenda un diagnóstico gratuito para obtener tu estimación personalizada.
-    </p>
-
   </div>
 </section>
-
 
 <!-- ══════════════════════════════════════════════
      METHODOLOGY
 ══════════════════════════════════════════════ -->
-<section id="methodology" aria-labelledby="methodology-title">
+<section id="methodology" aria-labelledby="methodology-h2">
   <div class="container">
 
-    <div class="section-header reveal">
-      <span class="section-label">Metodología probada</span>
-      <h2 class="section-title" id="methodology-title">
-        Migración sin riesgo:<br>
-        <span class="gradient-text">La metodología Redegal</span>
-      </h2>
-      <p class="section-subtitle">
-        4 fases estructuradas con entregables claros en cada hito.
-        Cero downtime, SEO preservado, datos 100% migrados.
-      </p>
+    <div class="methodology-header reveal">
+      <h2 id="methodology-h2">Tu migración en 4 fases — metodología probada</h2>
     </div>
 
-    <div class="methodology-steps reveal">
+    <div class="steps-grid reveal" role="list" aria-label="Fases de migración">
 
-      <!-- Fase 1 -->
-      <div class="step-card" role="article">
-        <div class="step-number" aria-label="Fase 1">1</div>
-        <span class="step-week">Semanas 1–2</span>
-        <h3 class="step-title">Diagnóstico &amp; Auditoría</h3>
-        <ul class="step-checklist" aria-label="Entregables fase 1">
-          <li>Auditoría técnica completa de la plataforma actual</li>
-          <li>Mapa de integraciones y dependencias críticas</li>
-          <li>Análisis SEO: keywords, backlinks, estructura URL</li>
-          <li>Estimación de TCO actual vs proyectado en Shopify Plus</li>
-          <li>Plan de migración de datos con inventario completo</li>
-        </ul>
+      <div class="step" role="listitem">
+        <div class="step-num" aria-label="Fase 01">01</div>
+        <div class="step-content">
+          <span class="step-duration">Sem 1–2</span>
+          <div class="step-title">Diagnóstico &amp; Auditoría</div>
+          <ul class="step-list" aria-label="Actividades de esta fase">
+            <li>Análisis técnico de la plataforma actual</li>
+            <li>Auditoría SEO y arquitectura de URLs</li>
+            <li>Evaluación de datos e integraciones</li>
+            <li>Mapeo de procesos de negocio</li>
+          </ul>
+        </div>
       </div>
 
-      <!-- Fase 2 -->
-      <div class="step-card" role="article">
-        <div class="step-number" aria-label="Fase 2">2</div>
-        <span class="step-week">Semanas 2–4</span>
-        <h3 class="step-title">Arquitectura &amp; Diseño</h3>
-        <ul class="step-checklist" aria-label="Entregables fase 2">
-          <li>Arquitectura técnica Shopify Plus definitiva</li>
-          <li>Plan de migración de datos con staging environment</li>
-          <li>Estrategia SEO: redirects 301, estructura nueva</li>
-          <li>Diseño UX/UI: wireframes y prototipo navegable</li>
-          <li>Selección y configuración de apps del ecosistema</li>
-        </ul>
+      <div class="step" role="listitem">
+        <div class="step-num" aria-label="Fase 02">02</div>
+        <div class="step-content">
+          <span class="step-duration">Sem 2–6</span>
+          <div class="step-title">Arquitectura &amp; Diseño</div>
+          <ul class="step-list" aria-label="Actividades de esta fase">
+            <li>Diseño UX/UI y sistema de diseño</li>
+            <li>Arquitectura técnica y selección de apps</li>
+            <li>Mapeado de APIs e integraciones</li>
+            <li>Plan de migración de datos</li>
+          </ul>
+        </div>
       </div>
 
-      <!-- Fase 3 -->
-      <div class="step-card" role="article">
-        <div class="step-number" aria-label="Fase 3">3</div>
-        <span class="step-week">Semanas 4–10</span>
-        <h3 class="step-title">Desarrollo &amp; Migración</h3>
-        <ul class="step-checklist" aria-label="Entregables fase 3">
-          <li>Desarrollo del tema Shopify (Liquid / Hydrogen)</li>
-          <li>Migración de datos: productos, clientes, órdenes históricas</li>
-          <li>Integración APIs: ERP, CRM, logística, pagos locales</li>
-          <li>QA exhaustivo en staging: funcional, performance, SEO</li>
-          <li>Capacitación del equipo interno en Shopify Admin</li>
-        </ul>
+      <div class="step" role="listitem">
+        <div class="step-num" aria-label="Fase 03">03</div>
+        <div class="step-content">
+          <span class="step-duration">Sem 4–14</span>
+          <div class="step-title">Desarrollo &amp; Migración</div>
+          <ul class="step-list" aria-label="Actividades de esta fase">
+            <li>Desarrollo front y configuración Shopify</li>
+            <li>Migración de productos, clientes y pedidos</li>
+            <li>Integración con ERP, CRM y sistemas legacy</li>
+            <li>QA exhaustivo y pruebas de carga</li>
+          </ul>
+        </div>
       </div>
 
-      <!-- Fase 4 -->
-      <div class="step-card" role="article">
-        <div class="step-number" aria-label="Fase 4">4</div>
-        <span class="step-week">Semanas 10–12</span>
-        <h3 class="step-title">Lanzamiento &amp; Soporte</h3>
-        <ul class="step-checklist" aria-label="Entregables fase 4">
-          <li>Go-live con cero downtime — switch DNS controlado</li>
-          <li>Monitoreo 24/7 las primeras 72 horas post-lanzamiento</li>
-          <li>Verificación SEO: Search Console, rastreo Googlebot</li>
-          <li>Optimización post-launch basada en datos reales</li>
-          <li>Soporte dedicado 3 meses post-lanzamiento incluido</li>
-        </ul>
+      <div class="step" role="listitem">
+        <div class="step-num" aria-label="Fase 04">04</div>
+        <div class="step-content">
+          <span class="step-duration">Sem 14–16+</span>
+          <div class="step-title">Lanzamiento &amp; Soporte</div>
+          <ul class="step-list" aria-label="Actividades de esta fase">
+            <li>Go-live con monitoreo en tiempo real</li>
+            <li>Formación del equipo interno</li>
+            <li>Optimización CRO post-lanzamiento</li>
+            <li>Soporte continuo y evolución</li>
+          </ul>
+        </div>
       </div>
 
-    </div><!-- /methodology-steps -->
-
-    <!-- Progress bar -->
-    <div class="reveal" style="margin-top: 2rem;">
-      <div class="progress-track" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" aria-label="Progreso de la migración">
-        <div class="progress-fill" id="progress-fill"></div>
-      </div>
-      <div class="progress-labels">
-        <span>Semana 1</span>
-        <span>Diagnóstico</span>
-        <span>Desarrollo</span>
-        <span>Semana 12 — Go-Live</span>
-      </div>
     </div>
-
   </div>
 </section>
 
+<!-- ══════════════════════════════════════════════
+     SARAH SECTION
+══════════════════════════════════════════════ -->
+<section id="sarah-section" aria-labelledby="sarah-h2">
+  <div class="container">
+    <div class="sarah-inner">
+
+      <div class="sarah-left reveal">
+        <span class="section-label light">Consultoría IA</span>
+        <h2 id="sarah-h2">Habla con Sarah ahora</h2>
+        <p>
+          Sarah es nuestra consultora especializada en Shopify Plus. Entrenada con todo nuestro conocimiento:
+          casos reales, metodologías, costos y tiempos de migración. Disponible 24/7.
+        </p>
+
+        <div class="sarah-capabilities" role="list" aria-label="Capacidades de Sarah">
+          <div class="sarah-cap" role="listitem">
+            <div class="sarah-cap-check" aria-hidden="true">✓</div>
+            <span>Analiza tu plataforma actual y estima costos de migración</span>
+          </div>
+          <div class="sarah-cap" role="listitem">
+            <div class="sarah-cap-check" aria-hidden="true">✓</div>
+            <span>Compara plataformas con datos reales de nuestros proyectos</span>
+          </div>
+          <div class="sarah-cap" role="listitem">
+            <div class="sarah-cap-check" aria-hidden="true">✓</div>
+            <span>Agenda tu diagnóstico gratuito directamente</span>
+          </div>
+        </div>
+
+        <button class="btn btn-white" data-open-sarah style="font-size:16px;padding:16px 32px;">
+          Iniciar conversación con Sarah →
+        </button>
+      </div>
+
+      <div class="sarah-right reveal" aria-hidden="true">
+        <div class="chat-mockup">
+          <div class="chat-header">
+            <div class="chat-avatar">S</div>
+            <div>
+              <div class="chat-name">Sarah · Consultora Shopify Plus</div>
+              <div class="chat-status">● En línea ahora</div>
+            </div>
+          </div>
+          <div class="chat-body">
+
+            <div class="msg user">
+              <div class="msg-bubble">¿Cuánto tarda migrar de Adobe Commerce a Shopify Plus?</div>
+              <div class="msg-time">12:03</div>
+            </div>
+
+            <div class="msg sarah">
+              <div class="msg-bubble">Con nuestra metodología, una migración de Adobe Commerce toma entre 12–18 semanas. Incluye diagnóstico, arquitectura, desarrollo y lanzamiento. ¿Te gustaría ver el caso de Mayoral? Fue exactamente eso.</div>
+              <div class="msg-time">12:03</div>
+            </div>
+
+            <div class="msg user">
+              <div class="msg-bubble">Sí, muéstrame el caso</div>
+              <div class="msg-time">12:04</div>
+            </div>
+
+            <div class="msg sarah">
+              <div class="msg-bubble">Mayoral migró en 16 semanas desde Magento. Resultado: +145% conversión mobile y expansión a más de 10 mercados internacionales. ¿Te envío el caso completo al email?</div>
+              <div class="msg-time">12:04</div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 <!-- ══════════════════════════════════════════════
      SUCCESS STORIES
 ══════════════════════════════════════════════ -->
-<section id="stories" aria-labelledby="stories-title">
+<section id="stories" aria-labelledby="stories-h2">
   <div class="container">
 
-    <div class="section-header reveal">
+    <div class="stories-header reveal">
       <span class="section-label">Resultados reales</span>
-      <h2 class="section-title" id="stories-title">
-        Lo que nuestros clientes<br>
-        <span class="gradient-text">lograron con Shopify Plus</span>
-      </h2>
-      <p class="section-subtitle">
-        Casos reales de migración enterprise. Métricas auditadas a 12 meses post-lanzamiento.
-      </p>
+      <h2 id="stories-h2">Marcas que ya crecen con Shopify Plus</h2>
+      <p>Casos reales de migración enterprise. Métricas auditadas a 12 meses post-lanzamiento.</p>
     </div>
 
     <div class="stories-grid">
 
-      <!-- Primor -->
-      <article class="story-card">
-        <div class="story-accent accent-blue" aria-hidden="true"></div>
-
-        <span class="story-category">
-          <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor" aria-hidden="true">
-            <circle cx="5" cy="5" r="4"/>
-          </svg>
-          Beauty &amp; Cosmética
-        </span>
-
-        <h3 class="story-company">Primor</h3>
-
-        <div class="story-migration" aria-label="Migración de VTEX a Shopify Plus">
-          <span>VTEX</span>
-          <span class="migration-arrow" aria-hidden="true"></span>
-          <span style="color: var(--color-green); font-weight: 600;">Shopify Plus</span>
+      <article class="story-card reveal" aria-label="Caso de éxito CUPRA">
+        <div class="story-metric" aria-label="Plus 220 por ciento de leads">+220%</div>
+        <div class="story-metric-label">leads de configurador online</div>
+        <div class="story-name">CUPRA</div>
+        <div class="story-sector">Automotive · España</div>
+        <div class="story-details">
+          <div class="story-detail"><span class="story-detail-dot" aria-hidden="true"></span>Migración desde plataforma custom</div>
+          <div class="story-detail"><span class="story-detail-dot" aria-hidden="true"></span>12 semanas de proyecto</div>
+          <div class="story-detail"><span class="story-detail-dot" aria-hidden="true"></span>Experiencia de marca premium integrada</div>
         </div>
-
-        <div class="story-metrics" role="list" aria-label="Métricas de éxito Primor">
-          <div class="story-metric" role="listitem">
-            <div class="story-metric-value gradient-text-blue">+285%</div>
-            <div class="story-metric-label">Revenue Online</div>
-          </div>
-          <div class="story-metric" role="listitem">
-            <div class="story-metric-value gradient-text-blue">x2.9</div>
-            <div class="story-metric-label">Tasa de Conversión</div>
-          </div>
-          <div class="story-metric" role="listitem">
-            <div class="story-metric-value gradient-text-blue">-40%</div>
-            <div class="story-metric-label">Reducción TCO</div>
-          </div>
-          <div class="story-metric" role="listitem">
-            <div class="story-metric-value gradient-text-blue">12</div>
-            <div class="story-metric-label">Semanas de migración</div>
-          </div>
-        </div>
-
-        <div class="story-timeline">
-          <span class="story-timeline-label">Plataforma de origen</span>
-          <span class="story-timeline-value">VTEX Commerce</span>
-        </div>
+        <blockquote class="story-quote">"Redegal nos permitió lanzar una experiencia digital a la altura de la marca. La plataforma escala sin esfuerzo y el equipo domina Shopify Plus al detalle."</blockquote>
       </article>
 
-      <!-- Padel Nuestro -->
-      <article class="story-card">
-        <div class="story-accent accent-green" aria-hidden="true"></div>
-
-        <span class="story-category">
-          <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor" aria-hidden="true">
-            <circle cx="5" cy="5" r="4"/>
-          </svg>
-          Deportes &amp; Lifestyle
-        </span>
-
-        <h3 class="story-company">Padel Nuestro</h3>
-
-        <div class="story-migration" aria-label="Migración de Adobe Commerce a Shopify Plus">
-          <span>Adobe Commerce</span>
-          <span class="migration-arrow" aria-hidden="true"></span>
-          <span style="color: var(--color-green); font-weight: 600;">Shopify Plus</span>
+      <article class="story-card reveal" aria-label="Caso de éxito RC Celta">
+        <div class="story-metric" aria-label="Plus 190 por ciento de ventas">+190%</div>
+        <div class="story-metric-label">ventas de merchandise online</div>
+        <div class="story-name">RC Celta</div>
+        <div class="story-sector">Sports · España</div>
+        <div class="story-details">
+          <div class="story-detail"><span class="story-detail-dot" aria-hidden="true"></span>Migración desde WooCommerce</div>
+          <div class="story-detail"><span class="story-detail-dot" aria-hidden="true"></span>8 semanas de proyecto</div>
+          <div class="story-detail"><span class="story-detail-dot" aria-hidden="true"></span>Alta disponibilidad en días de partido</div>
         </div>
-
-        <div class="story-metrics" role="list" aria-label="Métricas de éxito Padel Nuestro">
-          <div class="story-metric" role="listitem">
-            <div class="story-metric-value gradient-text-blue">+234%</div>
-            <div class="story-metric-label">Tráfico Orgánico</div>
-          </div>
-          <div class="story-metric" role="listitem">
-            <div class="story-metric-value gradient-text-blue">+178%</div>
-            <div class="story-metric-label">Revenue Total</div>
-          </div>
-          <div class="story-metric" role="listitem">
-            <div class="story-metric-value gradient-text-blue">12</div>
-            <div class="story-metric-label">Mercados activos</div>
-          </div>
-          <div class="story-metric" role="listitem">
-            <div class="story-metric-value gradient-text-blue">+95%</div>
-            <div class="story-metric-label">Conversión Mobile</div>
-          </div>
-        </div>
-
-        <div class="story-timeline">
-          <span class="story-timeline-label">Plataforma de origen</span>
-          <span class="story-timeline-value">Adobe Commerce</span>
-        </div>
+        <blockquote class="story-quote">"La migración fue rápida y sin caídas. La tienda aguanta picos de tráfico en días de partido sin ningún problema. Redegal entendió perfectamente las necesidades del club."</blockquote>
       </article>
 
-      <!-- Chopo -->
-      <article class="story-card">
-        <div class="story-accent accent-mixed" aria-hidden="true"></div>
-
-        <span class="story-category">
-          <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor" aria-hidden="true">
-            <circle cx="5" cy="5" r="4"/>
-          </svg>
-          Healthcare · México
-        </span>
-
-        <h3 class="story-company">Chopo</h3>
-
-        <div class="story-migration" aria-label="Migración de plataforma personalizada a Shopify Plus">
-          <span>Plataforma Custom</span>
-          <span class="migration-arrow" aria-hidden="true"></span>
-          <span style="color: var(--color-green); font-weight: 600;">Shopify Plus</span>
+      <article class="story-card reveal" aria-label="Caso de éxito Mayoral">
+        <div class="story-metric" aria-label="Plus 145 por ciento de conversión mobile">+145%</div>
+        <div class="story-metric-label">conversión mobile a 12 meses</div>
+        <div class="story-name">Mayoral</div>
+        <div class="story-sector">Fashion · España + LATAM</div>
+        <div class="story-details">
+          <div class="story-detail"><span class="story-detail-dot" aria-hidden="true"></span>Migración desde Magento</div>
+          <div class="story-detail"><span class="story-detail-dot" aria-hidden="true"></span>16 semanas de proyecto</div>
+          <div class="story-detail"><span class="story-detail-dot" aria-hidden="true"></span>Expansión a 10+ mercados internacionales</div>
         </div>
-
-        <div class="story-metrics" role="list" aria-label="Métricas de éxito Chopo">
-          <div class="story-metric" role="listitem">
-            <div class="story-metric-value gradient-text-blue">+156%</div>
-            <div class="story-metric-label">Citas Online</div>
-          </div>
-          <div class="story-metric" role="listitem">
-            <div class="story-metric-value gradient-text-blue">+89%</div>
-            <div class="story-metric-label">Revenue Digital</div>
-          </div>
-          <div class="story-metric" role="listitem">
-            <div class="story-metric-value gradient-text-blue">-35%</div>
-            <div class="story-metric-label">Costos operativos</div>
-          </div>
-          <div class="story-metric" role="listitem">
-            <div class="story-metric-value gradient-text-blue">+120%</div>
-            <div class="story-metric-label">Conversión Mobile</div>
-          </div>
-        </div>
-
-        <div class="story-timeline">
-          <span class="story-timeline-label">Mercado principal</span>
-          <span class="story-timeline-value">México — 120+ sucursales</span>
-        </div>
+        <blockquote class="story-quote">"Shopify Plus con Redegal nos dio la flexibilidad que necesitábamos para internacionalizarnos de verdad. Ahora operamos en más de 10 mercados desde una sola plataforma."</blockquote>
       </article>
 
-    </div><!-- /stories-grid -->
-
-  </div>
-</section>
-
-
-<!-- ══════════════════════════════════════════════
-     GARTNER & INDUSTRY RECOGNITION
-══════════════════════════════════════════════ -->
-<section id="gartner" aria-labelledby="gartner-title" style="padding:clamp(60px,8vw,100px) 0;">
-  <div class="container">
-
-    <div class="section-header reveal">
-      <span class="section-label">Reconocimiento Global</span>
-      <h2 class="section-title" id="gartner-title">
-        Líder en el <span class="gradient-text">Cuadrante Mágico de Gartner®</span>
-      </h2>
-      <p class="section-subtitle">
-        3 años consecutivos como Líder. La plataforma enterprise más recomendada del mercado según analistas independientes.
-      </p>
     </div>
 
-    <div class="bento-grid" role="list" aria-label="Reconocimientos de Shopify Plus" style="margin-top:clamp(32px,4vw,48px);">
-
-      <div class="bento-card bento-card-1 reveal reveal-delay-1" role="listitem" style="border-top:3px solid var(--color-green);">
-        <div class="bento-icon" aria-hidden="true">🏆</div>
-        <h3 class="bento-title">Líder 3 Años Consecutivos</h3>
-        <p class="bento-desc">Gartner Magic Quadrant for Digital Commerce 2023, 2024 y 2025. Posición más alta en "Ability to Execute" entre todos los vendors evaluados.</p>
-        <span class="bento-tag">MQ Leader</span>
+    <div class="stats-banner reveal" role="list" aria-label="Estadísticas globales Redegal">
+      <div class="banner-stat" role="listitem">
+        <span class="banner-stat-value" data-countup data-target="47" data-suffix="+">47+</span>
+        <span class="banner-stat-label">migraciones completadas</span>
       </div>
-
-      <div class="bento-card bento-card-2 reveal reveal-delay-2" role="listitem" style="border-top:3px solid var(--color-blue);">
-        <div class="bento-icon" aria-hidden="true">⭐</div>
-        <h3 class="bento-title">91% de Recomendación</h3>
-        <p class="bento-desc">Gartner Peer Insights™ Voice of the Customer: 4.4/5.0 puntuación media. Clasificado #1 en AI-Enabled Commerce use case (2025).</p>
-        <span class="bento-tag">Voice of Customer</span>
+      <div class="banner-stat" role="listitem">
+        <span class="banner-stat-value">€2.8B</span>
+        <span class="banner-stat-label">GMV gestionado</span>
       </div>
-
-      <div class="bento-card bento-card-3 reveal reveal-delay-3" role="listitem" style="border-top:3px solid #a855f7;">
-        <div class="bento-icon" aria-hidden="true">⚡</div>
-        <h3 class="bento-title">Infraestructura de Clase Mundial</h3>
-        <p class="bento-desc">$1.4B inversión anual en R&D. 40,000+ checkouts/minuto. 20% más rápido en time-to-market. Lanzamientos on-budget 3x más que la competencia.</p>
-        <span class="bento-tag">$1.4B R&D</span>
+      <div class="banner-stat" role="listitem">
+        <span class="banner-stat-value" data-countup data-target="98" data-suffix="%">98%</span>
+        <span class="banner-stat-label">satisfacción cliente</span>
       </div>
-
-    </div>
-
-    <div class="reveal" style="text-align:center; margin-top:24px; font-size:11px; color:rgba(255,255,255,0.35); line-height:1.6;">
-      Fuente: Gartner® Magic Quadrant™ for Digital Commerce, 2025 · Gartner® Peer Insights™ Voice of the Customer for Digital Commerce, 2024<br>
-      <em>Gartner no respalda a ningún proveedor, producto o servicio descrito en sus publicaciones de investigación.</em>
+      <div class="banner-stat" role="listitem">
+        <span class="banner-stat-value" data-countup data-target="20" data-suffix="+">20+</span>
+        <span class="banner-stat-label">años de experiencia</span>
+      </div>
     </div>
 
   </div>
 </section>
 
-
 <!-- ══════════════════════════════════════════════
-     SHOPIFY PLUS VIDEOS
+     CONTACT FORM
 ══════════════════════════════════════════════ -->
-<section id="videos" aria-labelledby="videos-title" style="padding:clamp(40px,6vw,80px) 0; padding-top:0;">
+<section id="contact" aria-labelledby="contact-h2">
   <div class="container">
 
-    <div class="section-header reveal">
-      <span class="section-label">Shopify Plus en Acción</span>
-      <h2 class="section-title" id="videos-title">
-        Descubre el poder de<br>
-        <span class="gradient-text">Shopify Plus</span>
-      </h2>
-      <p class="section-subtitle">
-        Conoce la plataforma enterprise líder y su framework headless Hydrogen.
-      </p>
+    <div class="contact-header reveal">
+      <h2 id="contact-h2">Agenda tu diagnóstico gratuito</h2>
     </div>
 
-    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap:clamp(16px,3vw,32px); margin-top:clamp(24px,4vw,48px);" class="reveal">
-
-      <div style="border-radius:var(--radius-card, 16px); overflow:hidden; border:1px solid rgba(255,255,255,0.08); background:rgba(255,255,255,0.03);">
-        <div style="padding:clamp(12px,2vw,16px) clamp(14px,2vw,20px); border-bottom:1px solid rgba(255,255,255,0.06);">
-          <div style="font-weight:700; font-size:clamp(13px,1.2vw,15px); color:#fff;">Shopify Plus Enterprise</div>
-          <div style="font-size:clamp(10px,1vw,12px); color:rgba(255,255,255,0.45); margin-top:2px;">La plataforma para marcas que escalan sin límites</div>
-        </div>
-        <div style="position:relative; padding-bottom:56.25%; height:0;">
-          <iframe src="https://www.youtube.com/embed/4L8VbGRibj8" title="Shopify Plus Enterprise Commerce" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy" style="position:absolute; top:0; left:0; width:100%; height:100%;"></iframe>
-        </div>
-      </div>
-
-      <div style="border-radius:var(--radius-card, 16px); overflow:hidden; border:1px solid rgba(255,255,255,0.08); background:rgba(255,255,255,0.03);">
-        <div style="padding:clamp(12px,2vw,16px) clamp(14px,2vw,20px); border-bottom:1px solid rgba(255,255,255,0.06);">
-          <div style="font-weight:700; font-size:clamp(13px,1.2vw,15px); color:#fff;">Hydrogen — Headless Commerce</div>
-          <div style="font-size:clamp(10px,1vw,12px); color:rgba(255,255,255,0.45); margin-top:2px;">El framework React de Shopify para experiencias ultrarrápidas</div>
-        </div>
-        <div style="position:relative; padding-bottom:56.25%; height:0;">
-          <iframe src="https://www.youtube.com/embed/2glvzpInqbI" title="Shopify Hydrogen — Headless Commerce Framework" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy" style="position:absolute; top:0; left:0; width:100%; height:100%;"></iframe>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-</section>
-
-
-<!-- ══════════════════════════════════════════════
-     MEXICO SECTION
-══════════════════════════════════════════════ -->
-<section id="mexico" aria-labelledby="mexico-title">
-  <div class="container">
-    <div class="mexico-inner">
-
-      <!-- Left: features -->
-      <div>
-        <div class="section-header reveal">
-          <span class="section-label">Shopify en México</span>
-          <h2 class="section-title" id="mexico-title">
-            Construido para el<br>
-            <span class="gradient-text">mercado mexicano</span>
-          </h2>
-          <p class="section-subtitle">
-            Shopify Plus está completamente adaptado para operar en México:
-            pagos locales, cumplimiento fiscal, logística y soporte nativo.
-          </p>
-        </div>
-
-        <div class="mexico-features reveal reveal-delay-1">
-
-          <div class="mexico-feature">
-            <span class="mexico-feature-icon" aria-hidden="true">💳</span>
-            <h3 class="mexico-feature-title">Pagos Locales</h3>
-            <p class="mexico-feature-desc">OXXO Pay, SPEI, Kueski Pay, Mercado Pago, Clip — todos nativos sin integraciones custom</p>
-          </div>
-
-          <div class="mexico-feature">
-            <span class="mexico-feature-icon" aria-hidden="true">🚚</span>
-            <h3 class="mexico-feature-title">Logística Local</h3>
-            <p class="mexico-feature-desc">Estafeta, Fedex MX, DHL, Paquetexpress, 99minutos integrados directamente</p>
-          </div>
-
-          <div class="mexico-feature">
-            <span class="mexico-feature-icon" aria-hidden="true">🧾</span>
-            <h3 class="mexico-feature-title">CFDI 4.0</h3>
-            <p class="mexico-feature-desc">Facturación electrónica SAT-compatible. Comprobantes automáticos por venta sin desarrollo extra</p>
-          </div>
-
-          <div class="mexico-feature">
-            <span class="mexico-feature-icon" aria-hidden="true">💰</span>
-            <h3 class="mexico-feature-title">Multi-moneda MXN</h3>
-            <p class="mexico-feature-desc">Precios en pesos mexicanos, conversión automática para visitantes internacionales, sin fricciones</p>
-          </div>
-
-          <div class="mexico-feature">
-            <span class="mexico-feature-icon" aria-hidden="true">🛍️</span>
-            <h3 class="mexico-feature-title">Hot Sale &amp; Buen Fin</h3>
-            <p class="mexico-feature-desc">Infraestructura probada para los picos de tráfico más grandes de México sin caídas</p>
-          </div>
-
-          <div class="mexico-feature">
-            <span class="mexico-feature-icon" aria-hidden="true">🤝</span>
-            <h3 class="mexico-feature-title">Soporte en Español 24/7</h3>
-            <p class="mexico-feature-desc">Equipo dedicado en CDMX + soporte Shopify Plus en español sin tiempo de espera</p>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- Right: stat + clients -->
-      <div class="mexico-right reveal reveal-delay-2">
-
-        <div class="mexico-stat-big" role="status" aria-label="Shopify en México desde 2011">
-          <div class="mexico-stat-value">2011</div>
-          <div class="mexico-stat-label">Shopify opera en México — 13+ años de presencia local</div>
-        </div>
-
-        <div>
-          <p style="font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-text-muted); margin-bottom: 1rem;">Clientes Redegal en México</p>
-          <div class="mexico-clients" role="list">
-            <div class="mexico-client-item" role="listitem">
-              <span class="mexico-client-dot" aria-hidden="true"></span>
-              <span class="mexico-client-name">Chopo</span>
-              <span class="mexico-client-sector">Healthcare</span>
-            </div>
-            <div class="mexico-client-item" role="listitem">
-              <span class="mexico-client-dot" aria-hidden="true"></span>
-              <span class="mexico-client-name">Banco Azteca Digital</span>
-              <span class="mexico-client-sector">Fintech</span>
-            </div>
-            <div class="mexico-client-item" role="listitem">
-              <span class="mexico-client-dot" aria-hidden="true"></span>
-              <span class="mexico-client-name">ITALIKA</span>
-              <span class="mexico-client-sector">Motocicletas</span>
-            </div>
-            <div class="mexico-client-item" role="listitem">
-              <span class="mexico-client-dot" aria-hidden="true"></span>
-              <span class="mexico-client-name">Grupo Herdez</span>
-              <span class="mexico-client-sector">Alimentos &amp; Bebidas</span>
-            </div>
-            <div class="mexico-client-item" role="listitem">
-              <span class="mexico-client-dot" aria-hidden="true"></span>
-              <span class="mexico-client-name">Nutrisa</span>
-              <span class="mexico-client-sector">Salud &amp; Wellness</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
-<!-- ══════════════════════════════════════════════
-     CTA — CONTACT FORM
-══════════════════════════════════════════════ -->
-<section id="contact" aria-labelledby="contact-title">
-  <div class="container">
     <div class="contact-inner">
 
-      <!-- Left: copy -->
-      <div class="contact-left">
-        <span class="section-label">Diagnóstico gratuito</span>
-        <h2 class="section-title reveal" id="contact-title">
-          ¿Listo para migrar<br>a Shopify Plus?
-        </h2>
+      <div class="form-card reveal">
+        <form id="contact-form" novalidate aria-label="Formulario de diagnóstico gratuito">
+          <div class="form-grid">
 
-        <div class="contact-bullets reveal reveal-delay-1">
-          <div class="contact-bullet">
-            <span class="bullet-check" aria-hidden="true">✓</span>
-            Diagnóstico técnico gratuito — sin compromisos
-          </div>
-          <div class="contact-bullet">
-            <span class="bullet-check" aria-hidden="true">✓</span>
-            Estimación de TCO actual vs Shopify Plus en 48h
-          </div>
-          <div class="contact-bullet">
-            <span class="bullet-check" aria-hidden="true">✓</span>
-            Hoja de ruta de migración personalizada
-          </div>
-          <div class="contact-bullet">
-            <span class="bullet-check" aria-hidden="true">✓</span>
-            Consultor dedicado senior — no juniors, no BDRs
-          </div>
-          <div class="contact-bullet">
-            <span class="bullet-check" aria-hidden="true">✓</span>
-            NDA firmado antes de compartir información técnica
-          </div>
-        </div>
+            <div class="form-group">
+              <label for="nombre">Nombre *</label>
+              <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required autocomplete="given-name" />
+            </div>
 
-        <div class="contact-details reveal reveal-delay-2">
-          <div class="contact-detail-item">
-            <span class="contact-detail-icon" aria-hidden="true">✉</span>
-            <a href="mailto:mexico@redegal.com" style="color: inherit; text-decoration: none;">mexico@redegal.com</a>
+            <div class="form-group">
+              <label for="empresa">Empresa *</label>
+              <input type="text" id="empresa" name="empresa" placeholder="Nombre de la empresa" required autocomplete="organization" />
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email *</label>
+              <input type="email" id="email" name="email" placeholder="tu@empresa.com" required autocomplete="email" />
+            </div>
+
+            <div class="form-group">
+              <label for="telefono">Teléfono</label>
+              <input type="tel" id="telefono" name="telefono" placeholder="+34 600 000 000" autocomplete="tel" />
+            </div>
+
+            <div class="form-group full">
+              <label for="plataforma">Plataforma actual *</label>
+              <select id="plataforma" name="plataforma" required>
+                <option value="" disabled selected>Selecciona tu plataforma</option>
+                <option value="vtex">VTEX</option>
+                <option value="adobe">Adobe Commerce / Magento</option>
+                <option value="sap">SAP Commerce Cloud</option>
+                <option value="woocommerce">WooCommerce</option>
+                <option value="prestashop">PrestaShop</option>
+                <option value="custom">Plataforma custom / propia</option>
+                <option value="otro">Otro</option>
+              </select>
+            </div>
+
+            <div class="form-group full">
+              <label for="mensaje">Mensaje (opcional)</label>
+              <textarea id="mensaje" name="mensaje" placeholder="Cuéntanos brevemente tu situación actual, volumen de ventas o cualquier detalle relevante..."></textarea>
+            </div>
+
           </div>
-          <div class="contact-detail-item">
-            <span class="contact-detail-icon" aria-hidden="true">☎</span>
-            <a href="tel:+525512345678" style="color: inherit; text-decoration: none;">+52 55 1234 5678</a>
+
+          <div class="form-submit-wrap">
+            <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;font-size:16px;padding:16px;">
+              Solicitar Diagnóstico →
+            </button>
           </div>
-          <div class="contact-detail-item">
-            <span class="contact-detail-icon" aria-hidden="true">📍</span>
-            Av. Insurgentes Sur 1602, Col. Crédito Constructor, CDMX 03940
-          </div>
+        </form>
+
+        <div class="form-success" id="form-success" role="alert" aria-live="polite">
+          <div class="form-success-icon" aria-hidden="true">✅</div>
+          <h3>¡Solicitud recibida!</h3>
+          <p>Nos pondremos en contacto en menos de 24 horas para confirmar tu diagnóstico gratuito.</p>
         </div>
       </div>
 
-      <!-- Right: form -->
-      <div class="contact-form-card reveal reveal-delay-2">
-
-        <div id="form-body">
-          <p style="font-size: 1rem; font-weight: 600; margin-bottom: 0.35rem;">Agenda tu diagnóstico gratuito</p>
-          <p style="font-size: 0.82rem; color: var(--color-text-muted); margin-bottom: 1.75rem;">Respuesta garantizada en menos de 24 horas hábiles.</p>
-
-          <form id="contact-form" novalidate aria-label="Formulario de contacto">
-
-            <div class="form-row">
-              <div class="form-group">
-                <label for="field-name">Nombre completo *</label>
-                <input
-                  type="text"
-                  id="field-name"
-                  name="name"
-                  placeholder="Juan García"
-                  autocomplete="name"
-                  required
-                  aria-required="true"
-                  aria-describedby="err-name"
-                />
-                <span class="form-error" id="err-name" role="alert">Por favor ingresa tu nombre (mín. 2 caracteres)</span>
-              </div>
-
-              <div class="form-group">
-                <label for="field-email">Email corporativo *</label>
-                <input
-                  type="email"
-                  id="field-email"
-                  name="email"
-                  placeholder="juan@empresa.com"
-                  autocomplete="email"
-                  required
-                  aria-required="true"
-                  aria-describedby="err-email"
-                />
-                <span class="form-error" id="err-email" role="alert">Por favor ingresa un email válido</span>
-              </div>
+      <div class="contact-right reveal">
+        <h3>¿Por qué hacer el diagnóstico?</h3>
+        <div class="contact-benefits" role="list">
+          <div class="contact-benefit" role="listitem">
+            <div class="benefit-icon" aria-hidden="true">🎯</div>
+            <div class="benefit-text">
+              <h4>30 min con un especialista certificado</h4>
+              <p>Sesión 1:1 con uno de nuestros arquitectos Shopify Plus. Sin venta agresiva, solo valor.</p>
             </div>
-
-            <div class="form-group">
-              <label for="field-company">Empresa *</label>
-              <input
-                type="text"
-                id="field-company"
-                name="company"
-                placeholder="Nombre de tu empresa"
-                autocomplete="organization"
-                required
-                aria-required="true"
-                aria-describedby="err-company"
-              />
-              <span class="form-error" id="err-company" role="alert">Por favor ingresa el nombre de tu empresa</span>
+          </div>
+          <div class="contact-benefit" role="listitem">
+            <div class="benefit-icon" aria-hidden="true">💰</div>
+            <div class="benefit-text">
+              <h4>Estimación de costos sin compromiso</h4>
+              <p>Recibirás un estimado real de TCO actual vs Shopify Plus y tiempo de migración estimado.</p>
             </div>
-
-            <div class="form-group">
-              <label for="field-platform">Plataforma actual *</label>
-              <select
-                id="field-platform"
-                name="platform"
-                required
-                aria-required="true"
-                aria-describedby="err-platform"
-              >
-                <option value="" disabled selected>Selecciona tu plataforma actual</option>
-                <option value="vtex">VTEX</option>
-                <option value="adobe">Adobe Commerce (Magento)</option>
-                <option value="sap">SAP Commerce Cloud</option>
-                <option value="woo">WooCommerce</option>
-                <option value="shopify">Shopify (plan menor)</option>
-                <option value="custom">Desarrollo a medida</option>
-                <option value="prestashop">PrestaShop</option>
-                <option value="other">Otra plataforma</option>
-              </select>
-              <span class="form-error" id="err-platform" role="alert">Por favor selecciona tu plataforma actual</span>
+          </div>
+          <div class="contact-benefit" role="listitem">
+            <div class="benefit-icon" aria-hidden="true">🗺️</div>
+            <div class="benefit-text">
+              <h4>Roadmap personalizado para tu empresa</h4>
+              <p>Plan de migración adaptado a tu plataforma actual, equipo y objetivos de negocio.</p>
             </div>
-
-            <div class="form-group">
-              <label for="field-message">¿Cuál es tu mayor reto actual? (opcional)</label>
-              <textarea
-                id="field-message"
-                name="message"
-                placeholder="Cuéntanos brevemente: ¿qué te ha frenado para migrar? ¿cuál es tu mayor dolor con la plataforma actual?"
-                aria-label="Mensaje opcional"
-              ></textarea>
-            </div>
-
-            <button type="submit" class="btn-submit" id="submit-btn">
-              Solicitar diagnóstico gratuito
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="display:inline;vertical-align:middle;margin-left:6px;" aria-hidden="true">
-                <path d="M3 8h10M9 5l4 3-4 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </button>
-
-            <p style="font-size: 0.72rem; color: var(--color-text-muted); margin-top: 1rem; text-align: center; line-height: 1.5;">
-              Al enviar aceptas nuestra
-              <a href="#" style="color: var(--color-green); text-decoration: none;">Política de Privacidad</a>.
-              No spam, nunca. Solo información relevante para tu migración.
-            </p>
-
-          </form>
-        </div><!-- /form-body -->
-
-        <div class="form-success" id="form-success" role="status" aria-live="polite">
-          <div class="form-success-icon" aria-hidden="true">✓</div>
-          <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;">¡Solicitud recibida!</h3>
-          <p style="font-size: 0.88rem; color: var(--color-text-dim);">
-            Nuestro equipo en México se pondrá en contacto contigo en menos de 24 horas hábiles.
-            Prepararemos un diagnóstico personalizado para tu empresa.
-          </p>
+          </div>
         </div>
 
+        <button class="contact-sarah-link" data-open-sarah aria-label="Hablar con Sarah ahora">
+          ¿Prefieres hablar ahora? Sarah te atiende →
+        </button>
       </div>
 
     </div>
   </div>
 </section>
-
 
 <!-- ══════════════════════════════════════════════
      FOOTER
@@ -1185,303 +1641,260 @@
 <footer id="footer" role="contentinfo">
   <div class="container">
 
-    <!-- Certifications -->
-    <div class="footer-certs" role="list" aria-label="Certificaciones y partnerships">
-
-      <div class="cert-badge" role="listitem">
-        <div class="cert-logo cert-logo-shopify" aria-hidden="true">S</div>
-        <span class="cert-name">Shopify Plus Partner Certificado</span>
-      </div>
-
-      <div class="cert-badge" role="listitem">
-        <div class="cert-logo cert-logo-adobe" aria-hidden="true">A</div>
-        <span class="cert-name">Adobe Commerce Partner</span>
-      </div>
-
-      <div class="cert-badge" role="listitem">
-        <div class="cert-logo cert-logo-google" aria-hidden="true">G</div>
-        <span class="cert-name">Google Premier Partner</span>
-      </div>
-
-      <div class="cert-badge" role="listitem">
-        <div class="cert-logo" style="background: linear-gradient(135deg, #0066CC, #00d4aa);" aria-hidden="true">PCI</div>
-        <span class="cert-name">PCI DSS Nivel 1 Compliance</span>
-      </div>
-
-      <div class="cert-badge" role="listitem">
-        <div class="cert-logo" style="background: linear-gradient(135deg, #1a1a2e, #333);" aria-hidden="true">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="white" aria-hidden="true">
-            <path d="M6 1l1.5 3h3l-2.5 2 1 3L6 7.5 3 9l1-3L1.5 4h3z"/>
-          </svg>
-        </div>
-        <span class="cert-name">ISO 27001 Certified</span>
-      </div>
-
-    </div>
-
-    <!-- Bottom row -->
-    <div class="footer-bottom">
+    <div class="footer-top">
 
       <div class="footer-brand">
-        <span class="footer-brand-name">Redegal — A Smart Digital Company</span>
-        <span class="footer-brand-tag">BME Growth: RDG · Fundada 2003 · 20+ años en eCommerce</span>
+        <div class="footer-logo">
+          <img src="redegal-logo.svg" alt="Redegal" />
+        </div>
+        <p class="footer-tagline">A Smart Digital Company</p>
       </div>
 
-      <div class="footer-links" role="navigation" aria-label="Enlaces del pie">
-        <a href="#">Privacidad</a>
-        <a href="#">Términos</a>
-        <a href="#">Cookies</a>
-        <a href="#">Contacto</a>
-      </div>
+      <nav class="footer-col" aria-label="Servicios">
+        <h4>Servicios</h4>
+        <ul>
+          <li><a href="#solution">Migración a Shopify Plus</a></li>
+          <li><a href="#solution">Desarrollo Headless</a></li>
+          <li><a href="#solution">B2B Commerce</a></li>
+          <li><a href="#solution">Optimización CRO</a></li>
+          <li><a href="#solution">Integraciones ERP/CRM</a></li>
+        </ul>
+      </nav>
 
-      <div class="footer-built">
-        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-          <rect x="1" y="1" width="10" height="10" rx="2" stroke="rgba(0,212,170,0.4)" stroke-width="1.2"/>
-          <path d="M4 6h4M6 4v4" stroke="rgba(0,212,170,0.4)" stroke-width="1.2" stroke-linecap="round"/>
-        </svg>
-        Built with <a href="#">Redegal Landing System</a>
+      <nav class="footer-col" aria-label="Plataformas">
+        <h4>Plataformas</h4>
+        <ul>
+          <li><a href="#comparison">Desde VTEX</a></li>
+          <li><a href="#comparison">Desde Adobe Commerce</a></li>
+          <li><a href="#comparison">Desde SAP Commerce</a></li>
+          <li><a href="#comparison">Desde WooCommerce</a></li>
+          <li><a href="#comparison">Desde Custom</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer-col" aria-label="Oficinas">
+        <h4>Oficinas</h4>
+        <ul>
+          <li><a href="#footer">Ourense</a></li>
+          <li><a href="#footer">A Coruña</a></li>
+          <li><a href="#footer">Madrid</a></li>
+          <li><a href="#footer">Barcelona</a></li>
+          <li><a href="#footer">Ciudad de México</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="mailto:shopifyplus@redegal.com">shopifyplus@redegal.com</a></li>
+          <li><a href="tel:+34986000000">+34 986 000 000</a></li>
+          <li><a href="#contact">Diagnóstico gratuito</a></li>
+          <li><button data-open-sarah style="background:none;border:none;color:rgba(255,255,255,0.6);font-size:13px;cursor:pointer;padding:0;font-family:inherit;transition:color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Hablar con Sarah</button></li>
+        </ul>
       </div>
 
     </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2025 Redegal S.A. · BME Growth: RDG</p>
+      <nav class="footer-links" aria-label="Pie de página legal">
+        <a href="#">Privacidad</a>
+        <a href="#">Aviso Legal</a>
+        <a href="#">Cookies</a>
+      </nav>
+    </div>
+
+    <p class="footer-trademark">Shopify is a registered trademark of Shopify Inc. Redegal S.A. is an independent Shopify Plus Partner and is not affiliated with, endorsed by, or sponsored by Shopify Inc.</p>
 
   </div>
 </footer>
 
 <!-- ══════════════════════════════════════════════
-     Visually hidden utility
+     JAVASCRIPT
 ══════════════════════════════════════════════ -->
-<style>
-  .visually-hidden {
-    position: absolute !important;
-    width: 1px !important;
-    height: 1px !important;
-    padding: 0 !important;
-    margin: -1px !important;
-    overflow: hidden !important;
-    clip: rect(0,0,0,0) !important;
-    white-space: nowrap !important;
-    border: 0 !important;
-  }
-</style>
-
-<!-- ══════════════════════════════════════════════
-     FLOATING CONTACT WIDGET
-══════════════════════════════════════════════ -->
-<!-- ===== FLOATING CONTACT WIDGET ===== -->
-<div id="fw" aria-label="Contacto rápido">
-
-  <button id="fw-btn" aria-expanded="false" aria-controls="fw-panel">
-    <span id="fw-dot"></span>
-    <svg width="17" height="17" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-      <path d="M2 4.5A1.5 1.5 0 013.5 3h13A1.5 1.5 0 0118 4.5v9A1.5 1.5 0 0116.5 15H6l-4 4V4.5z" fill="currentColor"/>
-    </svg>
-    <span class="fw-label">Habla con nosotros</span>
-  </button>
-
-  <div id="fw-panel" role="dialog" aria-modal="true" aria-label="Solicitar diagnóstico gratuito" hidden>
-    <div class="fw-bar"></div>
-
-    <div class="fw-head">
-      <div>
-        <p class="fw-eyebrow">Redegal México</p>
-        <h3 class="fw-title">Solicitar diagnóstico</h3>
-        <p class="fw-sub">Sin coste &middot; Respuesta en 24&nbsp;h</p>
-      </div>
-      <button class="fw-close" id="fw-close" aria-label="Cerrar">
-        <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>
-      </button>
-    </div>
-
-    <form id="fw-form" novalidate autocomplete="on">
-      <div class="fw-field">
-        <label for="fw-name">Nombre completo <span class="fw-req">*</span></label>
-        <input id="fw-name" type="text" name="name" placeholder="María García" required autocomplete="name"/>
-      </div>
-      <div class="fw-field">
-        <label for="fw-co">Empresa <span class="fw-req">*</span></label>
-        <input id="fw-co" type="text" name="company" placeholder="Grupo Herdez S.A." required autocomplete="organization"/>
-      </div>
-      <div class="fw-field">
-        <label for="fw-email">Email corporativo <span class="fw-req">*</span></label>
-        <input id="fw-email" type="email" name="email" placeholder="maria@empresa.com.mx" required autocomplete="email"/>
-      </div>
-      <div class="fw-field">
-        <label for="fw-tel">Teléfono <span class="fw-opt">(opcional)</span></label>
-        <input id="fw-tel" type="tel" name="phone" placeholder="+52 55 1234 5678" autocomplete="tel"/>
-      </div>
-      <button type="submit" class="fw-submit">
-        Solicitar diagnóstico gratuito
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h12M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-      <p class="fw-legal">Sin compromiso &middot; Datos tratados conforme al RGPD</p>
-    </form>
-
-    <div id="fw-ok" hidden>
-      <div class="fw-ok-ring">
-        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-          <path d="M6 14l6 6 10-12" stroke="url(#fw-gok)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-          <defs><linearGradient id="fw-gok" x1="6" y1="14" x2="22" y2="8" gradientUnits="userSpaceOnUse"><stop stop-color="#00d4aa"/><stop offset="1" stop-color="#0066cc"/></linearGradient></defs>
-        </svg>
-      </div>
-      <p class="fw-ok-title">¡Recibido, gracias!</p>
-      <p class="fw-ok-body">Un especialista de Redegal México te contactará en menos de 24 horas hábiles.</p>
-    </div>
-  </div>
-</div>
-
-<style>
-#fw {
-  position: fixed; bottom: 28px; right: 24px; z-index: 9999;
-  display: flex; flex-direction: column; align-items: flex-end; gap: 10px;
-}
-#fw-btn {
-  display: flex; align-items: center; gap: 9px;
-  padding: 11px 20px 11px 14px;
-  background: rgba(10,10,26,0.94);
-  border: 1px solid rgba(0,212,170,0.4);
-  border-radius: 100px; cursor: pointer; color: #fff;
-  font-size: 13.5px; font-weight: 600; font-family: inherit;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.55), 0 0 0 1px rgba(0,212,170,0.08), inset 0 1px 0 rgba(255,255,255,0.06);
-  backdrop-filter: blur(16px);
-  transition: border-color 0.25s, box-shadow 0.25s, transform 0.2s;
-  white-space: nowrap;
-}
-#fw-btn:hover {
-  border-color: rgba(0,212,170,0.7);
-  box-shadow: 0 12px 40px rgba(0,0,0,0.5), 0 0 20px rgba(0,212,170,0.18), inset 0 1px 0 rgba(255,255,255,0.08);
-  transform: translateY(-1px);
-}
-#fw-dot {
-  width: 7px; height: 7px; border-radius: 50%;
-  background: #00d4aa; flex-shrink: 0;
-  animation: fw-glow 2.4s ease-in-out infinite;
-}
-@keyframes fw-glow {
-  0%,100% { box-shadow: 0 0 4px rgba(0,212,170,0.6); }
-  50% { box-shadow: 0 0 10px rgba(0,212,170,1), 0 0 20px rgba(0,212,170,0.35); }
-}
-#fw-panel {
-  width: min(380px, calc(100vw - 32px));
-  background: rgba(9,9,24,0.98);
-  border: 1px solid rgba(255,255,255,0.07);
-  border-radius: 18px;
-  box-shadow: 0 32px 80px rgba(0,0,0,0.75), 0 0 0 1px rgba(0,212,170,0.06);
-  overflow: hidden;
-  backdrop-filter: blur(24px);
-  transform: translateY(14px) scale(0.97);
-  opacity: 0; pointer-events: none;
-  transition: transform 0.32s cubic-bezier(0.34,1.56,0.64,1), opacity 0.22s ease;
-}
-#fw-panel.open { transform: translateY(0) scale(1); opacity: 1; pointer-events: auto; }
-.fw-bar { height: 2px; background: linear-gradient(90deg, #00d4aa 0%, #0066cc 55%, #6636ce 100%); }
-.fw-head {
-  display: flex; align-items: flex-start; justify-content: space-between;
-  padding: 16px 18px 14px;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-}
-.fw-eyebrow { font-size: 9.5px; font-weight: 700; letter-spacing: 0.11em; text-transform: uppercase; color: #00d4aa; margin: 0 0 4px; }
-.fw-title { font-size: 16px; font-weight: 800; color: #fff; margin: 0 0 3px; letter-spacing: -0.01em; }
-.fw-sub { font-size: 11px; color: rgba(255,255,255,0.36); margin: 0; }
-.fw-close {
-  width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0; margin-top: 1px;
-  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.07);
-  display: flex; align-items: center; justify-content: center;
-  cursor: pointer; color: rgba(255,255,255,0.4);
-  transition: background 0.2s, color 0.2s;
-}
-.fw-close:hover { background: rgba(255,255,255,0.12); color: #fff; }
-#fw-form { padding: 15px 18px 17px; display: flex; flex-direction: column; gap: 10px; }
-.fw-field { display: flex; flex-direction: column; gap: 5px; }
-.fw-field label {
-  font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.38);
-  letter-spacing: 0.08em; text-transform: uppercase; display: flex; align-items: center; gap: 4px;
-}
-.fw-req { color: #00d4aa; }
-.fw-opt { font-weight: 400; opacity: 0.75; text-transform: none; letter-spacing: 0; font-size: 9.5px; }
-.fw-field input {
-  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 9px; padding: 10px 12px;
-  font-size: 13px; color: #fff; font-family: inherit;
-  outline: none; width: 100%; box-sizing: border-box;
-  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
-}
-.fw-field input::placeholder { color: rgba(255,255,255,0.2); }
-.fw-field input:focus {
-  border-color: rgba(0,212,170,0.5);
-  background: rgba(0,212,170,0.04);
-  box-shadow: 0 0 0 3px rgba(0,212,170,0.07);
-}
-.fw-field input.fw-err { border-color: rgba(255,80,80,0.55); box-shadow: 0 0 0 3px rgba(255,80,80,0.06); }
-.fw-submit {
-  display: flex; align-items: center; justify-content: center; gap: 8px;
-  background: linear-gradient(135deg, #00d4aa 0%, #0066cc 100%);
-  color: #fff; border: none; border-radius: 10px;
-  padding: 11px 16px; font-size: 13px; font-weight: 700;
-  cursor: pointer; font-family: inherit; width: 100%; margin-top: 2px;
-  box-shadow: 0 4px 18px rgba(0,212,170,0.28);
-  transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
-}
-.fw-submit:hover { opacity: 0.9; transform: translateY(-1px); box-shadow: 0 8px 28px rgba(0,212,170,0.38); }
-.fw-submit:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none; }
-.fw-legal { font-size: 9.5px; color: rgba(255,255,255,0.2); text-align: center; margin: 2px 0 0; }
-#fw-ok { padding: 28px 20px 30px; text-align: center; }
-.fw-ok-ring {
-  width: 56px; height: 56px; border-radius: 50%; margin: 0 auto 14px;
-  background: linear-gradient(135deg, rgba(0,212,170,0.12), rgba(0,102,204,0.12));
-  border: 1px solid rgba(0,212,170,0.25);
-  display: flex; align-items: center; justify-content: center;
-}
-.fw-ok-title { font-size: 16px; font-weight: 800; color: #fff; margin: 0 0 8px; }
-.fw-ok-body { font-size: 12px; color: rgba(255,255,255,0.42); line-height: 1.65; margin: 0; }
-@media (max-width: 480px) {
-  #fw { bottom: 18px; right: 14px; left: 14px; align-items: flex-end; }
-  #fw-panel { width: 100%; }
-  .fw-label { display: none; }
-  #fw-btn { padding: 13px; border-radius: 50%; width: 50px; height: 50px; justify-content: center; }
-  #fw-dot { display: none; }
-}
-</style>
-
 <script>
-(function(){
-  var btn=document.getElementById('fw-btn'),
-      panel=document.getElementById('fw-panel'),
-      cl=document.getElementById('fw-close'),
-      form=document.getElementById('fw-form'),
-      ok=document.getElementById('fw-ok');
-  function openFW(){
-    panel.hidden=false;
-    requestAnimationFrame(function(){panel.classList.add('open');});
-    btn.setAttribute('aria-expanded','true');
-    setTimeout(function(){var f=panel.querySelector('input');if(f)f.focus();},60);
+(function () {
+  'use strict';
+
+  /* ── Sticky nav ── */
+  var navbar = document.getElementById('navbar');
+  function onScroll() {
+    if (window.scrollY > 20) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
   }
-  function closeFW(){
-    panel.classList.remove('open');
-    btn.setAttribute('aria-expanded','false');
-    setTimeout(function(){panel.hidden=true;},330);
-  }
-  btn.addEventListener('click',function(){panel.classList.contains('open')?closeFW():openFW();});
-  cl.addEventListener('click',closeFW);
-  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeFW();});
-  form.addEventListener('submit',function(e){
-    e.preventDefault();
-    var nm=document.getElementById('fw-name'),
-        co=document.getElementById('fw-co'),
-        em=document.getElementById('fw-email'),
-        ok_flag=true;
-    [nm,co,em].forEach(function(f){
-      f.classList.remove('fw-err');
-      if(!f.value.trim()){f.classList.add('fw-err');ok_flag=false;}
-    });
-    if(em.value&&!/^[^@]+@[^@]+\.[^@]+$/.test(em.value)){em.classList.add('fw-err');ok_flag=false;}
-    if(!ok_flag)return;
-    var sb=form.querySelector('.fw-submit');
-    sb.disabled=true;sb.textContent='Enviando\u2026';
-    setTimeout(function(){form.hidden=true;ok.hidden=false;},900);
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  /* ── Hamburger ── */
+  var hamburger = document.getElementById('hamburger');
+  var mobileMenu = document.getElementById('mobile-menu');
+  hamburger.addEventListener('click', function () {
+    var isOpen = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', String(isOpen));
   });
+  document.querySelectorAll('.mobile-nav-link').forEach(function (link) {
+    link.addEventListener('click', function () {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
+  document.addEventListener('click', function (e) {
+    if (!mobileMenu.contains(e.target) && !hamburger.contains(e.target)) {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  /* ── Smooth scroll ── */
+  document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+    anchor.addEventListener('click', function (e) {
+      var target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        var navH = navbar ? navbar.offsetHeight : 72;
+        var top = target.getBoundingClientRect().top + window.scrollY - navH - 16;
+        window.scrollTo({ top: top, behavior: 'smooth' });
+      }
+    });
+  });
+
+  /* ── IntersectionObserver for .reveal ── */
+  var revealEls = document.querySelectorAll('.reveal');
+  var revealObs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  revealEls.forEach(function (el) { revealObs.observe(el); });
+
+  /* ── CountUp ── */
+  function animateCount(el) {
+    var target = parseInt(el.getAttribute('data-target'), 10);
+    var prefix = el.getAttribute('data-prefix') || '';
+    var suffix = el.getAttribute('data-suffix') || '';
+    var duration = 1400;
+    var start = performance.now();
+    function step(now) {
+      var elapsed = now - start;
+      var progress = Math.min(elapsed / duration, 1);
+      var ease = 1 - Math.pow(1 - progress, 3);
+      var val = Math.round(ease * target);
+      el.textContent = prefix + val + suffix;
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      }
+    }
+    requestAnimationFrame(step);
+  }
+  var countEls = document.querySelectorAll('[data-countup]');
+  var countObs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        animateCount(entry.target);
+        countObs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  countEls.forEach(function (el) { countObs.observe(el); });
+
+  /* ── Form submit ── */
+  var form = document.getElementById('contact-form');
+  var formSuccess = document.getElementById('form-success');
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var nombre = form.querySelector('#nombre').value.trim();
+      var empresa = form.querySelector('#empresa').value.trim();
+      var email = form.querySelector('#email').value.trim();
+      var plataforma = form.querySelector('#plataforma').value;
+      if (!nombre || !empresa || !email || !plataforma) {
+        alert('Por favor, completa los campos obligatorios.');
+        return;
+      }
+      var emailRx = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRx.test(email)) {
+        alert('Por favor, introduce un email válido.');
+        return;
+      }
+      /* Simulated submission — replace with real endpoint */
+      form.style.display = 'none';
+      formSuccess.style.display = 'block';
+    });
+  }
+
+  /* ── openSarah helper ── */
+  function openSarah() {
+    /* Attempt to open the Sarah widget */
+    try {
+      var root = document.getElementById('sarah-host');
+      if (root) {
+        var shadow = root.shadowRoot;
+        if (shadow) {
+          var trigger = shadow.querySelector('[data-sarah-trigger], .sarah-fab, button');
+          if (trigger) { trigger.click(); return; }
+        }
+      }
+      /* Fallback: scroll to Sarah section */
+      var sarahSection = document.getElementById('sarah-section');
+      if (sarahSection) {
+        var top = sarahSection.getBoundingClientRect().top + window.scrollY - 80;
+        window.scrollTo({ top: top, behavior: 'smooth' });
+      }
+    } catch (err) {
+      console.warn('openSarah error:', err);
+    }
+  }
+  window.openSarah = openSarah;
+
+  document.querySelectorAll('[data-open-sarah]').forEach(function (el) {
+    el.addEventListener('click', openSarah);
+  });
+
 })();
 </script>
 
-<script src="app.js"></script>
+<!-- ══════════════════════════════════════════════
+     SARAH WIDGET
+══════════════════════════════════════════════ -->
+<script>
+  window.Sarah = {
+    baseUrl: 'http://37.27.92.122:9456/widget',
+    apiUrl: 'http://37.27.92.122:9456',
+    primaryColor: '#007fff',
+    language: 'es'
+  };
+  (function() {
+    var cfg = window.Sarah || {};
+    var baseUrl = cfg.baseUrl || '';
+    var host = document.createElement('div');
+    host.id = 'sarah-host';
+    host.style.cssText = 'position:fixed;bottom:0;right:0;z-index:2147483647;';
+    document.body.appendChild(host);
+    var shadow = host.attachShadow({ mode: 'open' });
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = baseUrl + '/widget.css';
+    shadow.appendChild(link);
+    var mount = document.createElement('div');
+    mount.id = 'sarah-root';
+    shadow.appendChild(mount);
+    var script = document.createElement('script');
+    script.src = baseUrl + '/widget.js';
+    script.onload = function() {
+      var init = window.__sarahInit || window.__rdgbotInit;
+      if (init) init(mount, cfg);
+    };
+    document.head.appendChild(script);
+  })();
+</script>
+
 </body>
 </html>
