@@ -1648,9 +1648,20 @@
 
     // ---- Sarah widget opener ----
     function openSarah() {
-      var host = document.getElementById('sarah-host');
-      if (host) {
-        host.dispatchEvent(new CustomEvent('open', { bubbles: true }));
+      if (window.__redegalWidget && window.__redegalWidget.open) {
+        window.__redegalWidget.open();
+      } else {
+        // Widget aún cargando — reintentar hasta 3s
+        var attempts = 0;
+        var interval = setInterval(function() {
+          attempts++;
+          if (window.__redegalWidget && window.__redegalWidget.open) {
+            window.__redegalWidget.open();
+            clearInterval(interval);
+          } else if (attempts > 15) {
+            clearInterval(interval);
+          }
+        }, 200);
       }
     }
 

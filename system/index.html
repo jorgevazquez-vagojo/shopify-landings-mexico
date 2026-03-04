@@ -1832,24 +1832,19 @@
 
   /* ── openSarah helper ── */
   function openSarah() {
-    /* Attempt to open the Sarah widget */
-    try {
-      var root = document.getElementById('sarah-host');
-      if (root) {
-        var shadow = root.shadowRoot;
-        if (shadow) {
-          var trigger = shadow.querySelector('[data-sarah-trigger], .sarah-fab, button');
-          if (trigger) { trigger.click(); return; }
+    if (window.__redegalWidget && window.__redegalWidget.open) {
+      window.__redegalWidget.open();
+    } else {
+      var attempts = 0;
+      var interval = setInterval(function() {
+        attempts++;
+        if (window.__redegalWidget && window.__redegalWidget.open) {
+          window.__redegalWidget.open();
+          clearInterval(interval);
+        } else if (attempts > 15) {
+          clearInterval(interval);
         }
-      }
-      /* Fallback: scroll to Sarah section */
-      var sarahSection = document.getElementById('sarah-section');
-      if (sarahSection) {
-        var top = sarahSection.getBoundingClientRect().top + window.scrollY - 80;
-        window.scrollTo({ top: top, behavior: 'smooth' });
-      }
-    } catch (err) {
-      console.warn('openSarah error:', err);
+      }, 200);
     }
   }
   window.openSarah = openSarah;
