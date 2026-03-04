@@ -1861,9 +1861,9 @@
 ══════════════════════════════════════════════ -->
 <script>
   window.Sarah = {
-    baseUrl: 'http://37.27.92.122:9456/widget',
-    apiUrl: 'http://37.27.92.122:9456',
-    primaryColor: '#007fff',
+    baseUrl: window.location.origin + '/widget',
+    apiUrl: (window.location.protocol === 'https:' ? 'wss:' : 'ws:') + '//' + window.location.host + '/ws/chat',
+    primaryColor: '#96bf48',
     language: 'es'
   };
   (function() {
